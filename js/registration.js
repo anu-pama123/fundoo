@@ -1,9 +1,16 @@
-function validator() {
+function validator(page_name='') {
+    console.log(page_name)
     validateEmail();
     validateEmptyEmail();
-    validatePassword();
-    validateEmptyPassword();
-    passwordSimilarity()
+    if(page_name=="reset_password" || page_name=="registration"){
+        validatePassword();
+        validateEmptyPassword();
+    }
+    if(page_name=="registration"){
+        validateName();
+        validatefirstName();
+        validatesecondName();
+    }
 }
 
  //email validation
@@ -22,6 +29,25 @@ function validateEmptyEmail() {
     if(email.value == "") emailError.textContent = "choose a gmail address";    
 };
 
+
+// name validation
+
+const name = document.getElementById('first-name');
+const lastname = document.getElementById('last-name');
+const nameError = document.getElementById('name-error');    
+
+function validateName() {
+    if(name.value == "" && lastname.value == "") nameError.textContent = "Enter first and last names";
+}
+
+function validatefirstName() {
+    if(name.value == "") nameError.textContent = "Enter first name";        
+}
+
+function validatesecondName() {
+    if(lastname.value == "") nameError.textContent = "Enter second name";        
+}
+
 // password validation
 
 const pwd = document.getElementById('password');
@@ -33,12 +59,9 @@ function validateEmptyPassword() {
 };
 
 function validatePassword () {
-    let pwdRegex = RegExp('^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[@#$%^&-+=!]){1}[a-zA-Z0-9@#$%^&-+=!]{8,}$');
+    let pwdRegex = RegExp('^[a-zA-Z0-9]{8,}$');
     if (pwdRegex.test(pwd.value))
         pwdError.textContent = "";
     else pwdError.textContent = "use 8 character or more for your password";        
 }
 
-function passwordSimilarity() {
-    if(confirmpassword.value != pwd.value) pwdError.textContent = "Those passwords didin't match.Try again";
-}

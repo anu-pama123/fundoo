@@ -1,0 +1,317 @@
+html {
+    height: 100%;
+    width: 100%;
+    }
+    
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.body-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d5d2d5;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+    position: relative;
+    box-sizing: inherit;
+    padding-bottom: 10px;
+}
+
+.column-1 {
+    padding-left: 30px;
+    width: 70%;
+}
+
+.column-2 {    
+    width: 40%;
+}
+
+/* section 1 styling */
+
+.section1-header {
+    padding-top: 50px;
+    padding-left: 10px;
+    text-align: left;
+    height: 150px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;;
+}
+
+.section1-header span a1, a2, a3, a4, a5, a6 {
+    text-align: left;
+    font-size: 25px;
+}
+
+.section1-header span a1 {
+    color: blue;
+}
+
+.section1-header span a2 {
+    color: red;
+}
+
+.section1-header span a3 {
+    color: yellow;
+}
+
+
+.section1-header span a4 {
+    color: blue;
+}
+
+.section1-header span a5 {
+    color: green;
+}
+
+.section1-header span a6 {
+    color: red;
+}
+
+.section1-header h2 {
+    font-size: 23px;
+    font-weight: 100;
+    text-align: left;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;  
+}
+
+/* section 2 styling */
+
+.floating-label { 
+    position:relative; 
+  }
+
+.floating-label-name { 
+    position:relative; 
+    display: inline-block;
+}
+  
+.floating-input[type="email"] {
+    width: 370px;    
+}
+
+.floating-label[type="pass"] {
+   
+    position:relative; 
+    display: inline-block;
+    
+}
+
+
+.floating-label-password { 
+    position:relative; 
+    display: inline-block;
+}
+
+.floating-input , .floating-select {
+    border: 1px solid #d5d2d2;
+    border-radius: 5px;
+    height: 40px;
+    width: 170px;
+    font-size: 15px;
+    outline: none;
+    margin: 9px;
+}
+  
+.floating-input:focus {
+    border: 1.5px solid #1f52f9;
+}
+  
+label {
+    color:#999; 
+    font-size:14px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:15px;
+    top:20px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+  
+.floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top:-.1px;
+    background: #fff;
+    font-size:14px;
+    color:#5264AE;
+}
+  
+.floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
+    top:-18px;
+    font-size:14px;
+    color:#5264AE;
+}
+  
+.floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
+    width:50%;
+}
+  
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  
+.floating-textarea {
+    min-height: 30px;
+    max-height: 260px; 
+    overflow:hidden;
+    overflow-x: hidden; 
+}
+
+.line1 h1 {
+    font-size: 12px;
+    margin: -1px 0 0 14px;
+    width: 310px;
+    color: #555;
+    text-decoration: none;
+    font-weight: 100;
+  }
+
+.line2 {
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+.line2 a {
+    font-size: 12px;
+    margin: -1px 0 0 14px;
+    width: 310px;
+    color: #4971f6;
+    text-decoration: none;
+}
+  
+.line3 h1{
+    font-size: 15px;
+    margin: 20px 9px;
+    color: #555;
+    display: inline-block;
+    font-family: arial rounded mt;
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.email-error {
+    font-size: 12px;
+    padding-left: 13px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
+    color: red;
+}
+
+.password-error {
+    font-size: 12px;
+    padding-left: 13px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
+    color: red;
+}
+
+.name-error {
+    font-size: 12px;
+    padding-left: 13px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
+    color: red;
+}
+
+/* section 3 styling */
+
+.section3-next-button {
+    padding-top: 30px;
+}
+
+.submit-button {
+    background: #4971f6;
+    border: none;
+    color: #fff;
+    width: 20%;
+    padding: 10px 10px;
+    font-size: 10px;
+    border-radius: 4px; 
+    margin: 1px 0 50px 210px;
+    outline: none;
+}
+
+.submit-button:hover {
+    background: #254fdb;
+}
+
+.section3-next-button a {
+    font-size: 12px;
+    padding-left: 8px;
+    width: 310px;
+    color: #4971f6;
+    text-decoration: none;
+}
+
+.username-with-gmail {
+    position: relative;
+    display: block;
+    top:-40px;
+    left: 267px;
+    font-family: roboto;
+    color: #333;
+    font-size: 15px;
+    cursor: default;
+}
+
+.column-2 h1, h2 {        
+    font-size: 15px;
+    color:black;
+    font-family: arial rounded mt;
+    text-decoration: none;
+    font-weight: 10;
+    text-align: center;
+    line-height: 8  px;
+}
+
+.column-2 img {
+    width: 70%;   
+}
+
+@media only screen and (max-width: 940px) {
+    .form-content {
+        border: none;
+    }
+
+    .column-2 img {
+        display: none;   
+    }
+
+    .column-2 h1, h2 {        
+        display: none;
+    }
+
+    .floating-input {
+        width: 370px;
+    }
+}   
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+  
