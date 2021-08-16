@@ -1,7 +1,7 @@
 html {
     height: 100%;
     width: 100%;
-    }
+}
     
 body {
     height: 100%;
@@ -23,19 +23,19 @@ body {
     align-items: center;
     border: 1px solid #d5d2d5;
     border-radius: 10px;
-    height: auto;
+    height: 92%;
     width: auto;
     position: relative;
     box-sizing: inherit;
     padding-bottom: 10px;
 }
 
-.column-1 {
+.form-column-1 {
     padding-left: 30px;
     width: 70%;
 }
 
-.column-2 {    
+.form-column-2 {    
     width: 40%;
 }
 
@@ -101,20 +101,18 @@ body {
     width: 370px;    
 }
 
-.floating-label[type="pass"] {
-   
+.floating-label[type="pass"] {   
     position:relative; 
     display: inline-block;
     
 }
-
 
 .floating-label-password { 
     position:relative; 
     display: inline-block;
 }
 
-.floating-input , .floating-select {
+.floating-input {
     border: 1px solid #d5d2d2;
     border-radius: 5px;
     height: 40px;
@@ -148,37 +146,20 @@ label {
     color:#5264AE;
 }
   
-.floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
-    top:-18px;
-    font-size:14px;
-    color:#5264AE;
-}
-  
-.floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
-    width:50%;
-}
-  
 *, *:before, *:after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-  
-.floating-textarea {
-    min-height: 30px;
-    max-height: 260px; 
-    overflow:hidden;
-    overflow-x: hidden; 
-}
 
 .line1 h1 {
-    font-size: 12px;
+    font-size: 14px;
     margin: -1px 0 0 14px;
     width: 310px;
     color: #555;
     text-decoration: none;
     font-weight: 100;
-  }
+}
 
 .line2 {
     padding-top: 20px;
@@ -186,7 +167,7 @@ label {
 }
 
 .line2 a {
-    font-size: 12px;
+    font-size: 16px;
     margin: -1px 0 0 14px;
     width: 310px;
     color: #4971f6;
@@ -194,7 +175,7 @@ label {
 }
   
 .line3 h1{
-    font-size: 15px;
+    font-size: 14px;
     margin: 20px 9px;
     color: #555;
     display: inline-block;
@@ -247,7 +228,7 @@ label {
 }
 
 .section3-next-button a {
-    font-size: 12px;
+    font-size: 15px;
     padding-left: 8px;
     width: 310px;
     color: #4971f6;
@@ -265,17 +246,17 @@ label {
     cursor: default;
 }
 
-.column-2 h1, h2 {        
+.form-column-2 h1, h2 {        
     font-size: 15px;
     color:black;
     font-family: arial rounded mt;
     text-decoration: none;
-    font-weight: 10;
+    font-weight: 10;    
     text-align: center;
-    line-height: 8  px;
+    line-height: 8px;
 }
 
-.column-2 img {
+.form-column-2 img {
     width: 70%;   
 }
 
@@ -284,16 +265,20 @@ label {
         border: none;
     }
 
-    .column-2 img {
+    .form-column-2 img {
         display: none;   
     }
 
-    .column-2 h1, h2 {        
+    .form-column-2 h1, h2 {        
         display: none;
     }
 
     .floating-input {
         width: 370px;
+    }
+
+    .footer-section {
+        display: none;
     }
 }   
 

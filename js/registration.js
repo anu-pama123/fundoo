@@ -7,9 +7,9 @@ function validator(page_name='') {
         validateEmptyPassword();
     }
     if(page_name=="registration"){
-        validateName();
         validatefirstName();
         validatesecondName();
+        validateName();
     }
 }
 

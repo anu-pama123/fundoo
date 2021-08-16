@@ -20,7 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     border: 1px solid #d5d2d5;
     border-radius: 10px;
     height: auto;
@@ -86,6 +86,7 @@ body {
 
 .floating-label { 
     position:relative; 
+    padding-left: 40px;
   }
   
 .floating-input , .floating-select {
@@ -107,7 +108,7 @@ label {
     font-weight:normal;
     position:absolute;
     pointer-events:none;
-    left:15px;
+    left:55px;
     top:18px;
     transition:0.2s ease all; 
     -moz-transition:0.2s ease all; 
@@ -146,6 +147,7 @@ label {
 
 .email-error {
     padding-top: 20px;
+    padding-left: 40px;
     font-size: 10px;
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
     color: red;
@@ -211,3 +213,11 @@ label {
         border: none;
     }
 }   
+
+
+
+
+
+
+
+       
