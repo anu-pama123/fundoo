@@ -11,6 +11,14 @@ function validator(page_name='') {
         validatesecondName();
         validateName();
     }
+
+    let data = {
+        "firstName": getElementById('first-name'),
+        "lastName": getElementById('last-name'),
+        "email": "jhdb@gmail.com",
+        "service": "advance",
+        "password": "jsbfvjhdbf"
+    }
 }
 
  //email validation
@@ -64,4 +72,5 @@ function validatePassword () {
         pwdError.textContent = "";
     else pwdError.textContent = "use 8 character or more for your password";        
 }
+
 

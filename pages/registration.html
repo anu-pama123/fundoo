@@ -38,8 +38,8 @@
                 </div>
 
                 <li style="list-style-type:none">
-                    <error-output class="name-error" id="name-error"></error-output>
-                    <error-output class="name-error" id="name-error"></error-output>
+                    <div class="name-error" id="name-error"></div>
+                    <div class="name-error" id="name-error"></div>
                 </li>
 
                 <div class="floating-label">      
@@ -49,7 +49,7 @@
                 </div>
 
                 <li style="list-style-type:none">
-                <error-output class="email-error" value="text" id="email-error"></error-output>    
+                <div class="email-error" value="text" id="email-error"></div>    
                 </li>   
 
                 <div class="line1">
@@ -71,7 +71,7 @@
                 </div>
 
                 <li style="list-style-type:none">
-                <error-output class="password-error" value="text" for="name" id="password-error"></error-output>    
+                <div class="password-error" value="text" for="name" id="password-error"></div>    
                 </li>
                 <div class="line3">
                 <h1>Use 8 ormore characters with a mix of letters,numbers & symbols</h1>
@@ -81,7 +81,8 @@
 
                 <div class="section3-next-button">
                     <a href="http://127.0.0.1:5500/pages/signin.html" class="line3">Sign in instead</a>    
-                    <input class="submit-button" value="Next" name="" onclick="validator('registration')">
+                    <button class="submit-button" onclick="validator(page_name='registration')">
+                        </button>
                 </div>
             </div>
 
@@ -95,6 +96,8 @@
     </div>
         
     <script src="../js/registration.js"></script>
+    <script src="../js/axiosservice.js"></script>
+    <script src="../js/useservice.js"></script>
 
 </body>
 </html>
