@@ -7,7 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    <link rel="stylesheet" href="../css/google_keep.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -15,39 +17,75 @@
         <div class="header-section">
              <!-- header section -->
             <nav class="header-content">
+              <div id="sidebar" class="sidebar">
+                <div id="trigger" class="trigger">
+                   <i class="fa fa-bars"></i>
+                </div>
+                
+                <div class="sidebar-position">
+                  <i class="fa fa-user"></i>
+                  <span title="Position 1 with looooong name">Position 1 with looooong name</span>
+                </div>
+                <div class="sidebar-position">
+                  <i class="fa fa-cogs"></i>
+                  <span>Position 2</span>
+                </div>
+                <div class="sidebar-position">
+                  <i class="fa fa-table"></i>
+                  <span>Position 3</span>
+                </div>
+                
+                <div class="sidebar-position">
+                  <i class="fa fa-list"></i>
+                  <span>Position 4</span>
+                </div> 
+              </div>
+
                 <span>
                     <img src="../assets/keep_2020q4_48dp.png">
                 </span>
                 <span class="keep">keep</span>
                 <input class="search-input" id="email" type="" placeholder="search ">
                 <span>
-                    <img src="../assets/icon1.jpeg">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+
+                  
                 </span>
                 <span>
-                    <i class="fas fa-cog"></i>
+                    
+                
+                <i class="fa fa-th-large" aria-hidden="true"></i>
                 </span>
 
                 <span>
-                    <img src="../assets/keep_2020q4_48dp.png">
+                  <i class="fa fa-cog" aria-hidden="true"></i>
+                </span>
+
+                <span>
+                  <i class="fa fa-th" aria-hidden="true"></i>
                 </span>
             </nav>
 
         </div>
         <div class="main-section">
-            <div class="dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                  Take a note
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <li><a class="dropdown-item active" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                </ul>
-              </div>
-            <div class="section2-note">Notes you add appear here</div>
-
+          <div class="note-section">
+            <!-- <div id="toggle" onclick="showHide()">Take a note...</div>
+          </div>  
+            <div class="content">
+            <input id="content" placeholder="hai">
+          </div> -->
+          <button id="toggle">TOGGLE</button>
+          <div id="content"> 
+            <input placeholder="Take a note...">
+            <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+          </div>
+          </div>
 
         </div>
         
     </div>
+    
+    <script src="../js/google_keep.js"></script>
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>
