@@ -11,19 +11,13 @@ trigger.addEventListener('click', () => {
 
 // take a note section
 
-var titles  = [];
-
-
+var notes  = [];
 var titleInput  = document.getElementById("user-note");
-
-
 var messageBox  = document.getElementById("display");
 
 function insert ( ) {
- titles.push( titleInput.value );
- 
-  
- clearAndShow();
+  notes.push( titleInput.value );
+  clearAndShow();
 }
 
 function clearAndShow () {
@@ -31,8 +25,7 @@ function clearAndShow () {
   titleInput.value = "";
  
   // Show our output
-  messageBox.innerHTML = "";
-  
-  messageBox.innerHTML += "" + titles.join() + "<br/>";
+  messageBox.innerHTML = ""; 
+  messageBox.innerHTML += "" + notes.join();
   
 }

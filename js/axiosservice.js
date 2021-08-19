@@ -1,5 +1,5 @@
-import axios from 'axios';
-class service {
-    postMethod = () => (url, data, headers);
+// import axios from 'axios';
+// class service {
+//     postMethod = () => (url, data, headers);
     
-}
+// }

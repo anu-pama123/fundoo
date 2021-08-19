@@ -7,12 +7,13 @@ function validator(page_name='', urlPostfix="") {
     validateEmail();
     validateEmptyEmail();
 
-    if(page_name=="reset_password" || page_name=="registration"){
+    if(page_name=="reset_password" || page_name=="registration" || page_name=="sign_in"){
         const pwd = document.getElementById('password');
         const confirmpassword = document.getElementById('confirm-password')
         validatePassword();
         validateEmptyPassword();
         data["password"] = pwd.value;
+        data["service"] = "advance";
     }
     if(page_name=="registration"){
         const name = document.getElementById('first-name');
@@ -30,10 +31,10 @@ function validator(page_name='', urlPostfix="") {
         
     //   };
       
-    axios.post(baseurl+urlPostfix, {
-        data: data,
+    axios.post(baseurl+urlPostfix, 
+        data
         // headers:headers
-    })
+    )
     .then(res=> {
         console.log(res)
     })

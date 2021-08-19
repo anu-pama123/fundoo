@@ -153,6 +153,13 @@ label {
     color: red;
 }
 
+.password-error {
+    font-size: 12px;
+    padding-left: 13px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
+    color: red;
+}
+
 /* section 3 styling */
 
 .section3-lines a {
