@@ -11,7 +11,7 @@
 <body>
     <div class="body-content">  
         <form class="form-content">
-            <div class="column-1">
+            <div class="form-column-1">
 
                 <!-- section 1 -->
 
@@ -33,13 +33,13 @@
                 </div>               
 
                 <div class="floating-label-name">      
-                    <input class="floating-input" id="last-name" for="name"  type="" placeholder=" ">
+                    <input class="floating-input" id="last-name"  type="" placeholder=" ">
                     <label>second name</label>
                 </div>
 
                 <li style="list-style-type:none">
-                    <error-output class="name-error" value="" for="name" id="name-error"></error-output>
-                    <error-output class="name-error" id="name-error"></error-output>
+                    <div class="name-error" id="name-error"></div>
+                    <div class="name-error" id="name-error"></div>
                 </li>
 
                 <div class="floating-label">      
@@ -49,7 +49,7 @@
                 </div>
 
                 <li style="list-style-type:none">
-                <error-output class="email-error" value="text" for="name" id="email-error"></error-output>    
+                <div class="email-error" value="text" id="email-error"></div>    
                 </li>   
 
                 <div class="line1">
@@ -71,7 +71,7 @@
                 </div>
 
                 <li style="list-style-type:none">
-                <error-output class="password-error" value="text" for="name" id="password-error"></error-output>    
+                <div class="password-error" value="text" for="name" id="password-error"></div>    
                 </li>
                 <div class="line3">
                 <h1>Use 8 ormore characters with a mix of letters,numbers & symbols</h1>
@@ -80,20 +80,23 @@
                 <!-- section 3 -->
 
                 <div class="section3-next-button">
-                    <a href="" class="line3">Sign in instead</a>    
-                    <input class="submit-button" value="Next" name="" onclick="validator('registration')">
+                    <a href="http://127.0.0.1:5500/pages/signin.html" class="line3">Sign in instead</a>    
+                    <button type="button" class="submit-button" onclick="validator(page_name='registration', urlPostfix='user/userSignUp')">
+                    Next</button>
                 </div>
             </div>
 
-            <div class="column-2">
+            <div class="form-column-2">
                 <img src="../assets/logo.svg">
                 <h1>One account.All of Fundoo</h1>
                 <h2>working for you</h2>
             </div>
         </form>
+        
     </div>
         
     <script src="../js/registration.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </body>
 </html>

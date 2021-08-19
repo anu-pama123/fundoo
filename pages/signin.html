@@ -32,20 +32,22 @@
                 <label>Email or phone</label>
             </div>
             
-            <error-output class="email-error" value="text" for="name" id="email-error"></error-output>   
+            <div class="email-error" id="email-error"></div>   
 
              <!-- section 3 -->
 
             <div class="section3-lines">
-                <a href="" class="section3-line1">Forgot email?</a>
+                <a href="http://127.0.0.1:5500/pages/forgot_email.html" class="section3-line1">Forgot email?</a>
                 <a href="" class="section3-line2">Not your computer? Use Guest mode to sign in privately</a>
                 <a href="" class="section3-line3">Learn more</a>
-                <a href="" class="section3-line4">Create account</a>
-                <input class="submit-button" value="Next" name="" onclick="validator('registration')">
+                <a href="http://127.0.0.1:5500/pages/registration.html" class="section3-line4">Create account</a>
+             
+                <button class="submit-button" type="button" onclick="validator(page_name='signin', urlPostfix='user/login')">Next</button>
+        
             </div>
         </form>
     </div>
-        
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/registration.js"></script>
 
 </body>
