@@ -7,7 +7,14 @@ function validator(page_name='', urlPostfix="") {
     validateEmail();
     validateEmptyEmail();
 
-    if(page_name=="reset_password" || page_name=="registration" || page_name=="sign_in"){
+    if(page_name=="signin") {
+        const pwd = document.getElementById('password');
+        validatePassword();
+        validateEmptyPassword();
+        data["password"] = pwd.value;
+    }
+
+    if(page_name=="reset_password" || page_name=="registration"){
         const pwd = document.getElementById('password');
         const confirmpassword = document.getElementById('confirm-password')
         validatePassword();
