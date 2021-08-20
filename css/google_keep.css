@@ -209,16 +209,6 @@ body {
   padding-left: 50px;
 }
 
-.message-box {
-  padding-bottom: 150px;
-  /* border-style: groove; */
-}
-
-.message {
-  padding-top: 150px;
-  width: 30%;
-}
-
 .note-label {
   color: #80868b;
   cursor: default;
@@ -228,4 +218,10 @@ body {
   letter-spacing: 0;
   line-height: 1.75rem;
   padding-left: 200px;
+  padding-top: 250px;
 }
+
+.fa-picture-o, .fa-archive, .fa-ellipsis-v {
+  padding-left: 50px;
+}
+

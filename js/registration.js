@@ -33,17 +33,20 @@ function validator(page_name='', urlPostfix="") {
     }
     const baseurl = "http://fundoonotes.incubation.bridgelabz.com/api/";
 
-    // const headers = {
-    //     'Content-Type': 'application/json',
-        
-    //   };
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      };
       
     axios.post(baseurl+urlPostfix, 
-        data
-        // headers:headers
+        data, headers
     )
     .then(res=> {
         console.log(res)
+        if (page_name === "signin") {               
+            localStorage.setItem("token", res.data.id);
+          };
+          window.location.replace('../pages/google_keep.html')
     })
 }
 
@@ -111,8 +114,3 @@ function validatePassword () {
         pwdError.textContent = "";
     else pwdError.textContent = "use 8 character or more for your password";        
 }
-
-
-
-
-

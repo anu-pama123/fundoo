@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="javascript:getNotes()">
     <div class="body-content">
         <div class="header-section">
 
@@ -19,6 +19,7 @@
 
             <nav class="header-content">
               <div id="sidebar" class="sidebar">
+
                 <div id="trigger" class="trigger">
                    <i class="fa fa-bars"></i>
                 </div>
@@ -27,10 +28,12 @@
                   <i class="fa fa-user"></i>
                   <span title="Position 1 with looooong name">Notes</span>
                 </div>
+
                 <div class="sidebar-position">
                   <i class="fa fa-bell-o" aria-hidden="true"></i>
                   <span>Reminders</span>
                 </div>
+
                 <div class="sidebar-position">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                   <span>Edit labels</span>
@@ -40,67 +43,59 @@
                   <i class="fa fa-file-archive-o" aria-hidden="true"></i>
                   <span>Archieve</span>
                 </div> 
+
                 <div class="sidebar-position">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                   <span>Trash</span>
                 </div> 
               </div>
 
-                <span>
-                    <img src="../assets/icon1.png">
-                </span>
-                <span class="keep">keep</span>
-                <input class="search-input" id="email" type="" placeholder="search ">
-                <span>
-                  <i class="fa fa-refresh" aria-hidden="true"></i>
-
-                  
-                </span>
-                <span>
-                    
-                
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-                </span>
-
-                <span>
-                  <i class="fa fa-cog" aria-hidden="true"></i>
-                </span>
-
-                <span>
-                  <i class="fa fa-th" aria-hidden="true"></i>
-                </span>
+              <span>
+                  <img src="../assets/icon1.png">
+              </span>
+              <span class="keep">keep</span>
+              <input class="search-input" id="email" type="" placeholder="search ">
+              <span>
+                <i class="fa fa-refresh" aria-hidden="true"></i>                
+              </span>
+              <span>              
+              <i class="fa fa-th-large" aria-hidden="true"></i>
+              </span>
+              <span>
+                <i class="fa fa-cog" aria-hidden="true"></i>
+              </span>
+              <span>
+                <i class="fa fa-th" aria-hidden="true"></i>
+              </span>
             </nav>
-
         </div>
         <div class="main-section">
-          <div class="all">
-          <div class="note-section">
-          <button class="toggle" id="toggle">Take a note ...</button>
-          <div id="content"> 
-            <input class="user-note" type="text" id="user-note" placeholder="Take a note...">
-            <input type="button" value="show/save" onclick="insert()"/>
-            <li style="list-style-type:none"><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-            <li style="list-style-type:none"><i class="fa fa-bell-o" aria-hidden="true"></i>
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-              <i class="fa fa-archive" aria-hidden="true"></i>
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              <span class="close-section"><button class="close-button">close</button></span>
-            </li>
-          </div>
-
-          </div>
-          <div class="message">
-            <div>
-              <div class="message-box" id="display"></div>   
+            <div class="all">
+              <div class="note-section">
+                <input class="toggle" id="toggle" placeholder="Title"></input>
+                <div id="content"> 
+                  <input class="user-note" type="text" id="user-note" placeholder="Take a note...">
+                  <input type="button" class="note" id="note" value="show/save" onclick="insert()"/>
+                  <li style="list-style-type:none"><i class="fa fa-bell-o" aria-hidden="true"></i>
+                  <i class="fa fa-picture-o" aria-hidden="true"></i>
+                  <i class="fa fa-archive" aria-hidden="true"></i>
+                  <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                  <span class="close-section"><button class="close-button">close</button></span>
+                </li>
+              </div>
             </div>
-          </div>
+
+            <div class="message" id="12345">
+              <ul id="test123"></ul>
+            </div>
+
           <div class="note-label">Notes you add appear here</div>
         </div>
-        </div>
-        
+      </div>        
     </div>
     
     <script src="../js/google_keep.js"></script>
     <script src="../js/dashboard.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
