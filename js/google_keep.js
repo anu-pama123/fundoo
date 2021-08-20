@@ -1,3 +1,14 @@
+// add note section toggling
+
+var toggle  = document.getElementById("toggle");
+var content = document.getElementById("content");
+
+toggle.addEventListener("click", function() {
+  content.style.display = (content.dataset.toggled ^= 1) ? "block" : "none";
+});
+
+// sidebar open and close section
+
 const sidebar = document.getElementById('sidebar');
 const trigger = document.getElementById('trigger');
 
@@ -13,33 +24,12 @@ const headers = {
     headers: { 'Content-Type': 'application/json', 
     Authorization: localStorage.getItem('token')
   }
-}
-
-// take a note section
-
-// var note  = document.getElementById("note");
-// var title = document.getElementById("toggle")
-
-// function insert ( ) {
-  
-// axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes", {
-//   data: {
-//     "title": title.value,
-//    "description" : note.value
-//   }
-// })
-// .then(res=> {
-//   console.log(res)
-// })
-// }
-let notesList = [];
+};
 
 var note  = document.getElementById("user-note");
-var title = document.getElementById("toggle")
-// const headers = {
-//   'Content-Type': 'application/json',
-//   'Authorization': localStorage.getItem('token')
-// };
+var title = document.getElementById("toggle");
+
+// add note method
 
 function insert ( ) {
   let data = {"title": title.value};
@@ -53,64 +43,30 @@ function insert ( ) {
     console.log(res)
   })
   getNotes();
-}
+};
+
+// get note method
 
 function getNotes() {
   axios.get("http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList",
     headers  
   )
   .then(res=> {
-    console.log(res.data.data.data);
-    notesList = res.data.data.data;
+    console.log(res.data)
+    var nHTML = '';
+    for(i=0; i<res.data.data.data.length; i++){
+      nHTML += `<li>` + res.data.data.data[i].title
+       + "      "+  res.data.data.data[i].description + `</li>` + `<button id=`+ res.data.data.data[i].id +` type="button" onclick="deleteNote(id=this.id)">Delete</button>`;
+    }
+    document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>'  
   })
-  console.log("---------");
-  const list = document.getElementById("12345");
-  const listContainer = document.getElementById("test123")
-  function makeElem(item, index){
-    const {title, description} = item;
-    let li = document.createElement('li');
-    li.innerHTML = `<strong>title:</strong> ${title}<br><strong>description:</strong> ${description}`;
-    return li;
-  }
-  const listFragment = document.createDocumentFragment();
-  for (var i = 0; i < notesList; i++){
-    try {
-      const listElement = makeElem(notesList[i], i);
-      listFragment.append(listElement);
-  } catch (Error) {
-      console.log(Error);
-  }
-  }
-  // notesList.forEach(item, index => {
-  //   try {
-  //     const listElement = makeElem(item, index);
-  //     listFragment.append(listElement);
-  // } catch (Error) {
-  //     console.log(Error);
-  // }
-  // });
-  listContainer.append(listFragment);
-  list.append(listContainer);
-}
+};
 
-// window.onload = getNotes();
+// delete note method
 
-
-// var notes  = [];
-// var titleInput  = document.getElementById("user-note");
-// var messageBox  = document.getElementById("display");
-
-// function insert ( ) {
-//   notes.push( titleInput.value );
-//   clearAndShow();
-// }
-
-// function clearAndShow () {
-//   // Clear our fields
-//   titleInput.value = "";
- 
-//   // Show our output
-//   messageBox.innerHTML = ""; 
-//   messageBox.innerHTML += "" + notes.join();
-  
-// }
+function deleteNote(id){
+  let userId = localStorage.getItem('userId');
+  axios.delete("http://fundoonotes.incubation.bridgelabz.com/api/user/"+userId+"/notes/"+id,
+    headers  
+  )
+};

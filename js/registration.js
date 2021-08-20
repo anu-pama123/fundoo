@@ -22,6 +22,7 @@ function validator(page_name='', urlPostfix="") {
         data["password"] = pwd.value;
         data["service"] = "advance";
     }
+
     if(page_name=="registration"){
         const name = document.getElementById('first-name');
         const lastname = document.getElementById('last-name');
@@ -31,12 +32,13 @@ function validator(page_name='', urlPostfix="") {
         data["firstName"] = name.value;
         data["lastName"] = lastname.value;
     }
+
     const baseurl = "http://fundoonotes.incubation.bridgelabz.com/api/";
 
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
-      };
+    };
       
     axios.post(baseurl+urlPostfix, 
         data, headers
@@ -45,8 +47,9 @@ function validator(page_name='', urlPostfix="") {
         console.log(res)
         if (page_name === "signin") {               
             localStorage.setItem("token", res.data.id);
-          };
-          window.location.replace('../pages/google_keep.html')
+            localStorage.setItem("userId", res.data.userId);
+        };
+        window.location.replace('../pages/google_keep.html')
     })
 }
 
