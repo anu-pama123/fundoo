@@ -55,8 +55,8 @@ function getNotes() {
     console.log(res.data)
     var nHTML = '';
     for(i=0; i<res.data.data.data.length; i++){
-      nHTML += `<li>` + res.data.data.data[i].title
-       + "      "+  res.data.data.data[i].description + `</li>` + `<button id=`+ res.data.data.data[i].id +` type="button" onclick="deleteNote(id=this.id)">Delete</button>`;
+      nHTML += `<div class="item-container"><div class="items"> <li style="list-style-type:none">` + res.data.data.data[i].title
+       + "      "+`</li>` +  `<li style="list-style-type:none">` +  res.data.data.data[i].description + `</li>` + `<button id=`+ res.data.data.data[i].id +` type="button" onclick="deleteNote(id=this.id)">Delete</button></div></div>`;
     }
     document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>'  
   })
@@ -69,4 +69,5 @@ function deleteNote(id){
   axios.delete("http://fundoonotes.incubation.bridgelabz.com/api/user/"+userId+"/notes/"+id,
     headers  
   )
+  getNotes();
 };

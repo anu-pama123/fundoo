@@ -225,6 +225,18 @@ body {
   padding-left: 50px;
 }
 
-.get-notes {
+/* .item-list {
+  
+} */
+
+.items {
   border-style: groove;
+  width: 58%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+.item-container {
+  padding-top: 30px;
 }
