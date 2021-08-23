@@ -1,3 +1,12 @@
+// import {deletessssNote} from './service.js';
+const headerconfig = {
+  headers: { 'Content-Type': 'application/json', 
+              Authorization: localStorage.getItem('token')
+          }
+};
+window.addEventListener('DOMContentLoaded', (event) => {
+getNotes();
+
 // add note section toggling
 
 var toggle  = document.getElementById("toggle");
@@ -20,24 +29,17 @@ trigger.addEventListener('click', () => {
   });  
 });
 
-const headers = {
-    headers: { 'Content-Type': 'application/json', 
-    Authorization: localStorage.getItem('token')
-  }
-};
-
 var note  = document.getElementById("user-note");
 var title = document.getElementById("toggle");
 
 // add note method
 
-function insert ( ) {
+function insert() {
   let data = {"title": title.value};
-
   data["description"] = note.value;
-  console.log(headers)
+  console.log(headconfig)
   axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes",
-    data, headers  
+    data, headerconfig  
   )
   .then(res=> {
     console.log(res)
@@ -49,14 +51,14 @@ function insert ( ) {
 
 function getNotes() {
   axios.get("http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList",
-    headers  
+    headerconfig  
   )
   .then(res=> {
     console.log(res.data)
     var nHTML = '';
-    for(i=0; i<res.data.data.data.length; i++){
+    for(let i=0; i<res.data.data.data.length; i++){
       nHTML += `<div class="item-container"><div class="items"> <li style="list-style-type:none">` + res.data.data.data[i].title
-       + "      "+`</li>` +  `<li style="list-style-type:none">` +  res.data.data.data[i].description + `</li>` + `<button id=`+ res.data.data.data[i].id +` type="button" onclick="deleteNote(id=this.id)">Delete</button></div></div>`;
+       + "      "+`</li>` +  `<li style="list-style-type:none">` +  res.data.data.data[i].description + `</li>` + `<button id=`+ res.data.data.data[i].id +` type="button" onclick="trashNote(id=this.id)">Delete</button></div></div>`;
     }
     document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>'  
   })
@@ -64,10 +66,22 @@ function getNotes() {
 
 // delete note method
 
-function deleteNote(id){
-  let userId = localStorage.getItem('userId');
-  axios.delete("http://fundoonotes.incubation.bridgelabz.com/api/user/"+userId+"/notes/"+id,
-    headers  
-  )
-  getNotes();
-};
+// function deleteNote(id){
+//   let userId = localStorage.getItem('userId');
+//   console.log(userId);
+//   console.log(id);
+//   axios.delete("http://fundoonotes.incubation.bridgelabz.com/api/user/"+userId+"/notes/"+id,
+//     headers  
+//   )
+// };
+
+function trashNote(id) {
+  console.log(id,"hello")
+  let data = {
+    noteIdList: [id],
+    isDeleted: true,
+  };
+  service.deleteNote(data);
+}
+
+}) // doc

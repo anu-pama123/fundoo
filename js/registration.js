@@ -12,6 +12,8 @@ function validator(page_name='', urlPostfix="") {
         validatePassword();
         validateEmptyPassword();
         data["password"] = pwd.value;
+        window.location.replace('../pages/google_keep.html')
+        // data["service"] = "advance";
     }
 
     if(page_name=="reset_password" || page_name=="registration"){
@@ -20,7 +22,6 @@ function validator(page_name='', urlPostfix="") {
         validatePassword();
         validateEmptyPassword();
         data["password"] = pwd.value;
-        data["service"] = "advance";
     }
 
     if(page_name=="registration"){
@@ -29,8 +30,10 @@ function validator(page_name='', urlPostfix="") {
         validatefirstName();
         validatesecondName();
         validateName();
+        data["service"] = "advance";
         data["firstName"] = name.value;
         data["lastName"] = lastname.value;
+        window.location.replace('../pages/signin.html')
     }
 
     const baseurl = "http://fundoonotes.incubation.bridgelabz.com/api/";
@@ -49,7 +52,6 @@ function validator(page_name='', urlPostfix="") {
             localStorage.setItem("token", res.data.id);
             localStorage.setItem("userId", res.data.userId);
         };
-        window.location.replace('../pages/google_keep.html')
     })
 }
 
@@ -117,3 +119,5 @@ function validatePassword () {
         pwdError.textContent = "";
     else pwdError.textContent = "use 8 character or more for your password";        
 }
+
+

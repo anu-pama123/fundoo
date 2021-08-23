@@ -155,7 +155,7 @@ label {
 
 .password-error {
     font-size: 12px;
-    padding-left: 13px;
+    padding-left: 40px;
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
     color: red;
 }
