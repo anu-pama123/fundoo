@@ -1,4 +1,9 @@
 var axios = require("axios");
+
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 function validator(page_name='', urlPostfix="") {
     console.log(page_name)
     const email = document.getElementById('email');
@@ -12,8 +17,6 @@ function validator(page_name='', urlPostfix="") {
         validatePassword();
         validateEmptyPassword();
         data["password"] = pwd.value;
-        window.location.replace('../pages/google_keep.html')
-        // data["service"] = "advance";
     }
 
     if(page_name=="reset_password" || page_name=="registration"){
@@ -33,7 +36,6 @@ function validator(page_name='', urlPostfix="") {
         data["service"] = "advance";
         data["firstName"] = name.value;
         data["lastName"] = lastname.value;
-        window.location.replace('../pages/signin.html')
     }
 
     const baseurl = "http://fundoonotes.incubation.bridgelabz.com/api/";
@@ -42,19 +44,29 @@ function validator(page_name='', urlPostfix="") {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
     };
-      
     axios.post(baseurl+urlPostfix, 
         data, headers
     )
     .then(res=> {
         console.log(res)
-        if (page_name === "signin") {               
+        console.log(page_name)
+        if (page_name === "signin") {
+            console.log(res.data.id, res.data.userId)               
             localStorage.setItem("token", res.data.id);
             localStorage.setItem("userId", res.data.userId);
+            localStorage.setItem("email", data["email"]);
         };
     })
+    redirect();
 }
-
+function redirect() {
+    if(page_name==="signin"){
+        window.location.replace('../pages/google_keep.html')
+    }
+    if(page_name==="registration"){
+        window.location.replace('../pages/signin.html')
+    }
+}
 //email validation
 
 function validateEmail() {

@@ -1,8 +1,7 @@
 html {
   height: 100%;
   width: 100%;
-  }
-  
+}
 body {
   height: 100%;
   width: 100%;
@@ -13,7 +12,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column  ;
+  flex-direction: column ;
 }
 
 .header-section {
@@ -53,8 +52,7 @@ body {
 
 .dropdown {
   padding-left: 450px;
-  padding-top: 20px;
-  
+  padding-top: 20px; 
 }
 
 .dropdown-toggle {
@@ -63,24 +61,12 @@ body {
   padding-left: 50px;
   padding-right: 450px;
   height: 40px;
-  border-style: groove;
   border-width: 2px;
   border-radius: 5px;
 }
-
+  
 .dropdown-menu {
   padding-left: 500px;
-}
-
-.section2-note {
-  padding-top: 300px;
-  padding-left: 550px;
-  color: #80868b;
-  cursor: default;
-  font-family: 'Google Sans',Roboto,Arial,sans-serif;
-  font-size: 1.375rem;
-  font-weight: 400;
-  letter-spacing: 0;
 }
 
 .dropdown-menu {
@@ -91,6 +77,8 @@ body {
   padding-right: 40px;
   background-color: white;
 }
+
+/* sidebar styling */
 
 .sidebar {
   position: fixed;
@@ -157,16 +145,50 @@ body {
   padding-top: 18px;
 }
 
-.all {
-  padding-left: 390px;
+/* main section styling */
+
+.items {
+  border-style: groove;
+  width: 60%;
   padding-top: 20px;
-  width: 100%;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  border-width: 1px;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+.item-container {
+  padding-top: 30px;
+  padding-left: 200px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+#Div2 {
+  display: none;
+  transition:linear;
+  padding-left: 420px;
+  width: 78%;
+  padding-top: 20px;
+  border: white;
+}
+
+.Div2-contents {
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  border-radius: 10px;
+  height: 250px;
+}
+
+.Div1 {
+  padding-left: 420px;
+  padding-top: 20px;
+  width: 78%; 
 }
 
 .note-section {
   padding-left: 2px;
-  /* padding-top: 30px; */
-  /* border-style: groove; */
   border: white;
   border-radius: 10px;
   width: 100%;
@@ -178,70 +200,98 @@ body {
 }
 
 .toggle {
-  width: 67%;
+  width: 100%;
   height: 40px;
   background-color: #fff;
   border: none;
 }
 
 .user-note {
-  width: 67%;
+  width: 100%;
   height: 40px;
   border: none;
   background-color: #fff;
 }
 
-.note-section {
-  border-style: groove;
-  width: 60%; 
-}
-
-/* .close-button {
-border: none;
-} */
-
-.close-section {
-  padding-left: 620px;
-}
-
-.fa-refresh, .fa-th-large, .fa-cog, .fa-th  {
+.fa-refresh, .fa-th-large, .fa-cog, .fa-th, .fa-user-plus {
   padding-left: 50px;
 }
 
-.note-label {
-  color: #80868b;
-  cursor: default;
-  font-family: 'Google Sans',Roboto,Arial,sans-serif;
-  font-size: 1.375rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.75rem;
-  padding-left: 200px;
-  padding-top: 250px;
+.Div2-contents h1 {
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  font-size: 18px;
+  font-weight: 500;
+  height: 45px;
+  padding-top: 15px;
+  padding-left: 15px;
 }
 
-.fa-picture-o, .fa-archive, .fa-ellipsis-v, .fa-undo, .fa-repeat {
-  padding-left: 50px;
+.me-2 {
+  padding-top: 100px;
+  padding-left: 400px;
 }
 
-.fa-undo, .fa-repeat {
-  color: rgb(196, 191, 191);
+.btn-primary {
+  color: black;
+  background-color: white;
+  border: none;
 }
 
-.items {
-  border-style: groove;
-  width: 58%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-radius: 10px;
+.btn-primary:hover {
+  background-color:rgb(247, 244, 244);
+  color: black;
 }
 
-.item-container {
-  padding-top: 30px;
+.Div2-contents i {
+  padding-left: 25px;
 }
 
-textarea:focus, input:focus{
+.person-email {
+  border: none;
+  color: #3c4043;
+  font-size: 13px;
+  font-family: 'Roboto',arial,sans-serif;
   outline: none;
 }
 
+.default-email {
+  height: 30px;
+  color: #5f6368;
+  font-size: 13px;
+  direction: ltr;
+  font-family: 'Roboto',arial,sans-serif;
+  padding-left: 25px;
+}
 
+
+
+
+
+/* icon styling */
+
+.fa-picture-o, .fa-archive, .fa-ellipsis-v, .fa-undo, .fa-repeat {
+padding-left: 50px;
+}
+.fa-repeat { 
+  padding-right: 50px;
+}
+
+.fa-undo, .fa-repeat {
+color: rgb(196, 191, 191);
+}
+.collaborator-button {
+  border: none;
+  background-color: white;
+}
+.note {
+  border: none;
+  background-color: white;
+}
+  
+.note:hover {
+  background-color: rgb(238, 235, 235);
+  border-radius: 5px;
+  width: 12%;
+}
+
+  
