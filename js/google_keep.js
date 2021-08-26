@@ -55,58 +55,53 @@ function getNotes() {
     console.log(res.data)
     var nHTML = '';
     for(let i=0; i<res.data.data.data.length; i++) {
-    if(res.data.data.data[i].isDeleted == false) {
-    nHTML += `<div class="item-container">
-                
-                <div class="items"> 
-                
-                  <li style="list-style-type:none">` + res.data.data.data[i].title + " "+
-                  `</li>` + 
-                  `<li style="list-style-type:none">` + res.data.data.data[i].description + 
-                  `</li>` + 
-                   
-                  `<button id=`+ res.data.data.data[i].id +` type="button" onclick="trashNote(id)">Delete
-                  </button>
-                  <div class="sub-buttons">
-                    <i class="fa fa-bell-o" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>`;
-  }
-  }
-  document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
+      if(res.data.data.data[i].isDeleted == false) {
+      nHTML += `<div class="item-container">
+      <div class="items"> 
+        <li style="list-style-type:none">` + res.data.data.data[i].title + " "+
+        `</li>` + 
+        `<li style="list-style-type:none">` + res.data.data.data[i].description + 
+        `</li>` + 
+        `<button id=`+ res.data.data.data[i].id +` type="button" onclick="trashNote(id)">Delete
+        </button>
+        <div class="sub-buttons">
+          <i class="fa fa-bell-o" aria-hidden="true"></i>
+          <button id="Button1" class="collaborator-button" value="Click" onclick="switchVisible()"/>
+            <i class="fa fa-user-plus" aria-hidden="true">
+            </i>
+          </button> 
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+          <i class="fa fa-archive" aria-hidden="true"></i>
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
+          </div>
+        </div>
+      </div>`;
+      }
+    }
+    document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
   })
 };
-
+      
 // search method for collaborator
 
 function search() {
-  var email  = document.getElementById("person-email");
-  if(email.value.length > 0) {
+  console.log('search-----------')
+  var email  = document.getElementById("search-email");
+  var nHTML = '';
+  if(email.value.length > 2) {
     let data = { searchWord: email.value };
     axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/searchUserList",
       data, headerconfig  
     )
     .then(res=> { 
-      console.log(res + '++++++');
-      console.log(res.data.details+ '--------------')
-
-
-      let array=['anu.anupamacv'];
-      displaySearch(array);
+      var array = res.data.data.details;
+      for(let i=0; i< res.data.data.details.length; i++) {
+        console.log(array[i])
+        nHTML += ` <li style="list-style-type:none">` + res.data.data.details[i].email+
+          ` </li>`;
+      }
+      document.getElementById("colab-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
     })
   } 
 }; 
 
-function displaySearch(array) {
-  var email  = document.getElementById("person-email");
-  result_array = []
-  console.log(array);
-  for(let i=0; i< array.length; i++) {
-    console.log(array[i])
-    if(array[i].includes(email.value)) {
-      result_array.push(array[i]);
-    }
-  }
-  console.log(result_array, '++++++++++++');
-}

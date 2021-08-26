@@ -131,5 +131,3 @@ function validatePassword () {
         pwdError.textContent = "";
     else pwdError.textContent = "use 8 character or more for your password";        
 }
-
-
