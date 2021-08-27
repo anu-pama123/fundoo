@@ -91,18 +91,33 @@
       <div id="Div2">
         <div class="Div2-contents">
           <h1>Collaborators</h1>
+
+          <!-- owner email display section -->
+          <div class="default-email-container">
           <div class="default-email" id="default-email" ></div> 
-          <i class="fa fa-user-plus" aria-hidden="true"></i>            
+        </div>
+
+          <!-- collaborator display section -->
+
+          <div class="collab-email" id="collab-email" ></div>
+
           <div class="collab-dropdown">
             <div class="dropdown">
+              <i class="fa fa-user-plus" aria-hidden="true"></i> 
               <input class="btn btn-secondary dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" onclick="search()">          
               </input>
+              <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onclick="displayCollaborator()">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                </button> 
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
                 <div id="colab-list">
                 </div>
               </ul>
             </div>            
           </div>
+
+          <!-- collaborator button section -->
+
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div classb>
               <div class="btn-group me-2" role="group" aria-label="First group">
@@ -115,8 +130,7 @@
           </div>  
           </div>
         </div>
-      </div>
-      
+      </div>      
       <!-- display note section   -->
 
       <div class="item-container">

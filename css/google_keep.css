@@ -201,7 +201,7 @@ textarea:focus, input:focus{
 }
 
 .me-2 {
-  padding-top: 50px;
+  padding-top: 10px;
   padding-left: 400px;
 }
 
@@ -228,13 +228,8 @@ textarea:focus, input:focus{
   outline: none;
 }
 
-.default-email {
-  height: 30px;
-  color: #5f6368;
-  font-size: 13px;
-  direction: ltr;
-  font-family: 'Roboto',arial,sans-serif;
-  padding-left: 25px;
+.default-email-container {
+  padding-left: 28px;
 }
 
 /* icon styling */
@@ -279,10 +274,6 @@ textarea:focus, input:focus{
   font-family: 'Roboto',arial,sans-serif;
   padding-left: 25px;
 }
-
-
-
-
 
 /* icon styling */
 
@@ -363,4 +354,18 @@ color: rgb(196, 191, 191);
 
 .collab-dropdown {
   padding-left: 25px;
+}
+
+/* collaborator display section */
+
+.collab-email {
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+
+/* collaborator add button */
+
+.add-collab {
+  border: none;
+  background-color: white;
 }

@@ -105,3 +105,15 @@ function search() {
   } 
 }; 
 
+// add collaborator method
+
+function addCollaborator() {
+  var x = 0;
+  let email = document.getElementById("search-email").value;
+  console.log(email);
+  var nHTML = '';
+    nHTML += email;
+    document.getElementById("collab-email").innerHTML = nHTML
+};
+
+
