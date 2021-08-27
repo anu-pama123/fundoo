@@ -329,6 +329,7 @@ color: rgb(196, 191, 191);
 .dropdown-toggle {
   background-color: white;
   border: none;
+  color: black;
 }
 
 .dropdown-menu {
@@ -340,6 +341,7 @@ color: rgb(196, 191, 191);
 
 .dropdown-menu:hover {
   background-color: white;
+  border-color: white;
 }
 
 .btn-secondary  {
@@ -349,7 +351,18 @@ color: rgb(196, 191, 191);
 
 .btn {
   padding-left: 1px;
+  border-color: white;
+}
 
+.btn:hover {
+  background-color: white;
+}
+
+.btn:hover {
+  background-color: white;
+  border-color: white;
+  box-shadow: none;
+  color: black;
 }
 
 .collab-dropdown {
