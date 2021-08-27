@@ -77,9 +77,10 @@
       <div id="Div1" class="Div1">
         <div class="all">
           <div class="note-section" id="note-section">
-            <input class="toggle" id="toggle" placeholder="Title"></input>
+            <input class="toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
             <div id="content"> 
-              <input class="user-note" type="text" id="user-note" placeholder="Take a note...">
+              <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
+              <div class="addnote-collab" id="addnote-collab-h"></div>
               <div id="icons"></div>
             </div>
           </div>
@@ -93,9 +94,10 @@
           <h1>Collaborators</h1>
 
           <!-- owner email display section -->
+
           <div class="default-email-container">
-          <div class="default-email" id="default-email" ></div> 
-        </div>
+            <div class="default-email" id="default-email" ></div> 
+          </div>
 
           <!-- collaborator display section -->
 
@@ -104,9 +106,9 @@
           <div class="collab-dropdown">
             <div class="dropdown">
               <i class="fa fa-user-plus" aria-hidden="true"></i> 
-              <input class="btn btn-secondary dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" onclick="search()">          
+              <input class="btn btn-secondary dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="search()">          
               </input>
-              <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onclick="displayCollaborator()">
+              <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
                 <i class="fa fa-check" aria-hidden="true"></i>
                 </button> 
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
@@ -121,9 +123,9 @@
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div classb>
               <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-primary" onclick="switchVisible();">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="switchVisible()">Cancel</button>
                 <div class="bu">                
-                  <button type="button" class="btn btn-primary">Save</button>
+                  <button type="button" class="btn btn-primary" onclick="addNoteCollaborator()">Save</button>
                 </div>
               </div>
             </div>

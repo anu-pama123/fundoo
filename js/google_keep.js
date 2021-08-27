@@ -1,5 +1,7 @@
 // import {deleteNote} from './service.js';
 
+let collabList=[];
+
 const headerconfig = {
   headers: { 'Content-Type': 'application/json', 
   Authorization: localStorage.getItem('token')
@@ -33,7 +35,8 @@ var title = document.getElementById("toggle");
 function insert() {
 
   let data = {"title": title.value};
-    data["description"] = note.value;
+    data["description"] = note.value
+    data[""]
     axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes",
     data, headerconfig 
   )
@@ -97,15 +100,15 @@ function search() {
       var array = res.data.data.details;
       for(let i=0; i< res.data.data.details.length; i++) {
         console.log(array[i])
-        nHTML += ` <li style="list-style-type:none">` + res.data.data.details[i].email+
-          ` </li>`;
+        nHTML += ` <li style="list-style-type:none"><div id="`+ res.data.data.details[i].email +`" onclick=addToCollabaratorList(id) >` + res.data.data.details[i].email+
+          `</div> </li>`;
       }
       document.getElementById("colab-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
     })
   } 
 }; 
 
-// add collaborator method
+// add collaborator in collaborator page method
 
 function addCollaborator() {
   var x = 0;
@@ -116,4 +119,25 @@ function addCollaborator() {
     document.getElementById("collab-email").innerHTML = nHTML
 };
 
+// method for adding collaborator in addnote 
 
+function addNoteCollaborator() {
+  switchVisible();
+  let email = document.getElementById("search-email").value;
+  displayCollabListInMain();
+}
+
+
+function addToCollabaratorList(selectedEmail){
+  collabList.push(selectedEmail)
+  console.log(selectedEmail);
+}
+
+function displayCollabListInMain(){
+  var colab  = document.getElementById("addnote-collab-h");
+  let val ="";
+  for(let i=0; i< collabList.length; i++){
+    val += collabList[i] + ', ';
+  }
+  colab.innerHTML = val;
+}
