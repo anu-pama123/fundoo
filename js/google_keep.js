@@ -2,7 +2,6 @@ let collabList=[];
 let searchResults=[];
 let displayColabList=[];
 let notesList = [];
-// let archive = false;
 
 const headerconfig = {
   headers: { 'Content-Type': 'application/json', 
@@ -68,7 +67,7 @@ function getNotes() {
           colString += res.data.data.data[i].collaborators[i].email, " ,";
         }
         nHTML += `<div class="item-container" >
-                    <div class="items" style="background-color:`+res.data.data.data[i].color+`">                                       
+                    <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
                       <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
                         <li style="list-style-type:none">` + res.data.data.data[i].title + " "+
                         `</li>` + 
@@ -78,20 +77,54 @@ function getNotes() {
                         `</li>` + 
                       `</button>
                       <div class="sub-buttons">
-                        <i class="fa fa-bell-o" aria-hidden="true"></i>
-                        <button id="Button1" class="collaborator-button" value="Click" onclick="switchVisible()">
-                          <i class="fa fa-user-plus" aria-hidden="true">
-                          </i>
+                        <span class="material-icons-outlined">
+                          add_alert
+                        </span>
+                        <button id="Button1" class="collaborator-button" style="background-color:`+res.data.data.data[i].color+`" value="Click" onclick="switchVisible()">
+                        <span class="material-icons-outlined">
+                          person_add_alt
+                        </span>
                         </button>
-                        <i class="fa fa-picture-o" aria-hidden="true"></i>
-                        <i class="fa fa-archive" aria-hidden="true"></i>
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
-                        <button id=`+ res.data.data.data[i].id +` type="button" class="delete-buttton" onclick="trashNote(id)">Delete
-                        </button>
-                      </div>
-                    </div>                      
-                  </div>                                
-                `;
+                        <div class="btn-group dropup" id="color-palette-dropdown">
+                          <button type="button" id=`+res.data.data.data[i].id+` style="background-color:`+res.data.data.data[i].color+`" onclick="addColorInDisplay(id)" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-icons-outlined">
+                              palette
+                            </span>
+                          </button>
+                          <div class="color-palette dropdown-menu" id ="color-palette">
+                          <div class="bg-white circled"></div>
+                          <div class="bg-red"></div>
+                          <div class="bg-orange"></div>
+                          <div class="bg-yellow"></div>
+                          <div class="bg-green"></div>
+                          <div class="bg-turquoise"></div>
+                          <div class="bg-blue"></div>
+                          <div class="bg-dark-blue"></div>
+                          <div class="bg-purple"></div>
+                          <div class="bg-pink"></div>
+                          <div class="bg-brown"></div>
+                          <div class="bg-grey"></div>
+                          </div>
+                          </div>
+
+                          <span class="material-icons-outlined">
+                            photo
+                          </span>
+                          <button class="archive-button" id=`+res.data.data.data[i].id+` style="background-color:`+res.data.data.data[i].color+`" onclick="isDisplaynoteArchive(id)">
+                          <span class="material-icons-outlined">
+                            archive
+                          </span>  
+                          </button>
+                          <span class="material-icons-outlined">
+                            more_vert
+                          </span> 
+                          <button id=`+ res.data.data.data[i].id +` style="background-color:`+res.data.data.data[i].color+`" type="button" class="delete-buttton" onclick="trashNote(id)">Delete
+                          </button>
+                          </div>
+                          </div> 
+                          </div> 
+                              
+                        `;
       }
     }
     document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
@@ -197,3 +230,43 @@ function popupClose(){
   document.getElementById("overlay").style.display="none";
 }
 
+// display note section color pallet
+
+function addColorInDisplay(id) {
+  document.querySelectorAll(".color-palette div").forEach((element) => {
+    element.addEventListener("click", () => {
+      document.querySelectorAll(".color-palette div").forEach((element) => {
+      element.classList.remove("selected-color");
+    });
+    element.classList.add("selected-color");
+    document.getElementById("item-color").style.backgroundColor = window
+    .getComputedStyle(element, null)
+    .getPropertyValue("background-color");
+    let rgb = document.getElementById("item-color").style.backgroundColor;
+    let data = {"noteIdList": [id]};
+    data["color"]='#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('');
+    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/changesColorNotes",
+    data, headerconfig 
+    )
+    .then(res=> {
+    console.log(res.data);
+    }) 
+  });
+  });
+  }
+  
+  // archive in display note section
+  
+  function isDisplaynoteArchive(id) {
+  let data = {
+  noteIdList:[id], 
+  isArchived: archive
+  };
+  archiveDisplayNote(data);
+  // getNotes();
+  }
+  
+  function archiveDisplayNote(data) {
+  return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/archiveNotes", data, headerconfig)
+  }
+  

@@ -9,6 +9,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/google_keep.css">
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <title>Document</title>
 </head>
 
@@ -59,16 +61,24 @@
         <span class="keep">keep</span>
           <input class="search-input" id="email" type="" placeholder="search ">
         <span>
-          <i class="fa fa-refresh" aria-hidden="true"></i> 
+          <span class="material-icons-outlined">
+            refresh
+          </span>
         </span>
         <span> 
-          <i class="fa fa-th-large" aria-hidden="true"></i>
+          <span class="material-icons-outlined">
+            grid_view
+          </span>
         </span>
         <span>
-          <i class="fa fa-cog" aria-hidden="true"></i>
+          <span class="material-icons-outlined">
+            settings
+          </span>
         </span>
         <span>
-          <i class="fa fa-th" aria-hidden="true"></i>
+          <span class="material-icons-outlined">
+            apps
+          </span>
         </span>
       </nav>
     </div>
@@ -76,7 +86,6 @@
     <!-- main section -->
 
     <div class="main-section">
-
       <div id="Div1" class="Div1">
         <div class="all">
           <div class="note-section" id="note-section">
@@ -84,7 +93,11 @@
             <div id="content"> 
               <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
               <div class="addnote-collab" id="addnote-collab-h"></div>
+
+              <!-- icon section -->
+
               <div id="icons"></div>
+              
             </div>
           </div>
         </div>
@@ -180,7 +193,23 @@
             .getPropertyValue("background-color");
 
             element.classList.add("selected-color");
+            document.getElementById("note").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
             document.getElementById("toggle").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
+            document.getElementById("archive-button").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
+            document.getElementById("btn-colors").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
+            document.getElementById("Button1").style.backgroundColor = window
             .getComputedStyle(element, null)
             .getPropertyValue("background-color");
 

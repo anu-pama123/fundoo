@@ -180,21 +180,28 @@ textarea:focus, input:focus{
   width: 100%;
   height: 40px;
   border: none;
+  letter-spacing: .00625em;
+  font-family: 'Google Sans',Roboto,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .user-note {
   width: 100%;
   height: 40px;
   border: none;
+  letter-spacing: .00625em;
+  font-family: 'Google Sans',Roboto,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-.fa-refresh, .fa-th-large, .fa-cog, .fa-th, .fa-user-plus {
-  padding-left: 50px;
+span .material-icons-outlined {
+  padding-left: 30px;
 }
 
-.fa-user-plus {
-  position: absolute;
-
+#icons .material-icons-outlined {
+  padding-left: 10px;
 }
 
 .Div2-contents h1 {
@@ -323,7 +330,7 @@ color: rgb(196, 191, 191);
 .delete-buttton {
   border: none;
   background-color: white;
-
+  padding-left: 180px;
 }
 
 .delete-buttton:hover {
@@ -332,7 +339,10 @@ color: rgb(196, 191, 191);
   width: 12%;
 }
 
-
+.archive-button {
+  border: none;
+  background-color: white;
+}
   
 /* display note icons hover */
 
@@ -438,23 +448,26 @@ color: rgb(196, 191, 191);
   opacity: 1;
   cursor: pointer;
   display: inline-block;
-  border: 2px solid transparent;
+  /* border: 2px solid transparent; */
   outline: none !important;
 }
 
-.color-palette div:hover {
+/* .color-palette div:hover {
   border-color: rgba(0, 0, 0, 0.4);
-}
+} */
 
 .color-palette div.circled {
   border-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-.color-palette div.selected-color {
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE4cHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbD0iIzAwMDAwMCIgb3BhY2l0eT0iMC41NCIgdmlld0JveD0iMCAwIDE4IDE4IiBoZWlnaHQ9IjE4cHgiPgogIDxwYXRoIGQ9Im0wIDBoMTh2MThoLTE4eiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Im02LjYxIDExLjg5bC0zLjExLTMuMTEtMS4wNiAxLjA2IDQuMTcgNC4xNiA4Ljk1LTguOTUtMS4wNi0xLjA1eiIvPgo8L3N2Zz4K);
+/* .color-palette div.selected-color {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
+} */
+
+.btn:hover {
+  border: white;
 }
 
 .bg-red {
