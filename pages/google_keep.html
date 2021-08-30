@@ -25,6 +25,9 @@
           </div>
 
           <div class="sidebar-position">
+          </div>
+
+          <div class="sidebar-position">
             <i class="fa fa-user"></i>
             <span title="Position 1 with looooong name">Notes</span>
           </div>
@@ -112,7 +115,7 @@
                 <i class="fa fa-check" aria-hidden="true"></i>
                 </button> 
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
-                <div id="colab-list">
+                <div id="colab-list" class="collab-list">
                 </div>
               </ul>
             </div>            
@@ -133,13 +136,23 @@
           </div>
         </div>
       </div>      
+      
       <!-- display note section   -->
 
       <div class="item-container">
-        <div id="item-list" class="item-list">
+        <div id="item-list" class="item-list">          
         </div> 
       </div>
 
+
+      <!-- display note popup section -->
+
+      <div class="overlay" id="overlay" style="display:none;"></div>
+      <div class="popup" id="popup" style="display:none;">
+        <div class="popup-inner" id="popup-inner-content">    
+        </div>
+        <input type="button" name="Close" class="s3-btn-close" onclick="popupClose();" value="&times;">
+      </div>
     </div>
   </div> 
 
@@ -149,6 +162,31 @@
   <script src="../js/dashboard.js" type="text/javascript"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="../js/icons.js"></script>
+
+  <script>
+    document.querySelectorAll(".color-palette div").forEach((element) => {
+        element.addEventListener("click", () => {
+            document.querySelectorAll(".color-palette div").forEach((element) => {
+                element.classList.remove("selected-color");
+            });
+            element.classList.add("selected-color");
+            document.getElementById("note-section").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
+            element.classList.add("selected-color");
+            document.getElementById("user-note").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
+            element.classList.add("selected-color");
+            document.getElementById("toggle").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
+
+        });
+    });
+</script>
 
 </body>
 </html>
