@@ -36,7 +36,7 @@ body {
 }
 
 .keep {
-  padding-right: 150px;
+  padding-right: 30px;
 }
 
 .search-input {
@@ -55,8 +55,8 @@ body {
 /* sidebar styling */
 
 .sidebar {
-  position: fixed;
-  width: 50px;
+  position: absolute;
+  width: 6%;
   height: 100%;
   transition: all 0.5s ease;
 }
@@ -95,6 +95,11 @@ body {
 
 .sidebar--open {
   width: 250px;
+  border-radius: 10px;
+}
+
+.side {
+  width: 70%; 
 }
 
 .sidebar--open .sidebar-position span {
@@ -123,23 +128,25 @@ body {
 /* main section styling */
 
 .items {
-  width: 40%;
-  height: 150px;
-  padding-top: 20px;
-  padding-left: 20px;
+  width: 100%;
+  min-height: 150px;
   border-radius: 10px;
   border-width: 1px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
-  
 }
 
 .notes {
   padding-top: 50px;
-  padding-left: 300px;
-  padding-right: 300px;
+  padding-left: 70px;
+  width: 30%;
+  display:flex;
+}
+
+.item-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 50px;
 }
 
 textarea:focus, input:focus{
@@ -312,7 +319,7 @@ color: rgb(196, 191, 191);
 .delete-buttton {
   border: none;
   background-color: white;
-  padding-left: 180px;
+  padding-left: 10px;
 }
 
 .delete-buttton:hover {
@@ -330,6 +337,8 @@ color: rgb(196, 191, 191);
 
 .sub-buttons {
   display: none;
+  padding-top: 30px;
+  padding-left: 20px;
 }
 
 .items:hover .sub-buttons {
@@ -403,15 +412,6 @@ color: rgb(196, 191, 191);
   border: none;
   background-color: white;
 }
-
-/* .addnote-collab {
-  border-style: groove;
-  width: 5%;
-  color: black;
-  border-radius: 55px;
-  background-color: rgb(233, 93, 68);
-  border-color: rgb(233, 93, 68);
-} */
 
 /* color pallete styling */
 
@@ -515,7 +515,7 @@ color: rgb(196, 191, 191);
 .popup-inner{
   padding:1em;
 } 
-input.s3-btn-close{
+input .s3-btn-close{
   position:absolute;
   top:-0.5em;
   right:-0.5em;  
@@ -535,10 +535,34 @@ input.s3-btn-close{
   width: 100%; 
 }
 
-.s3-center{
-  text-align:center;
+.s3-btn li{
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 15px;
 }
 
-.s3-btn li{
-  padding-right: 100px;
-}
+@media only screen and (max-width: 540px) {
+  .search-input {
+      display: none;
+  }
+  .item-list {
+    display: inline;
+  }
+
+  .notes {
+    width: 100%;
+  }
+
+  .header-section {
+    position: fixed;
+    padding-top: 20px;
+  }
+
+  .side {
+    position: fixed;
+  }
+  .keep {
+    padding-right: 10px;
+  }
+}   
+

@@ -115,10 +115,11 @@ function getNotes() {
                             archive
                           </span>  
                           </button>
-                          <span class="material-icons-outlined">
-                            more_vert
-                          </span> 
-                          <button id=`+ res.data.data.data[i].id +` style="background-color:`+res.data.data.data[i].color+`" type="button" class="delete-buttton" onclick="trashNote(id)">Delete
+                          
+                          <button id=`+ res.data.data.data[i].id +` style="background-color:`+res.data.data.data[i].color+`" type="button" class="delete-buttton" onclick="trashNote(id)">
+                            <span class="material-icons-outlined">
+                              more_vert
+                            </span> 
                           </button>
                           </div>
                           </div> 
@@ -127,7 +128,7 @@ function getNotes() {
                         `;
       }
     }
-    document.getElementById("item-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
+    document.getElementById("item-list").innerHTML = nHTML;
   })
 };
       
