@@ -58,7 +58,7 @@
         <span>
           <img src="../assets/icon1.png">
         </span>
-        <span class="keep">keep</span>
+        <span class="keep">Fundoo</span>
           <input class="search-input" id="email" type="" placeholder="search ">
         <span>
           <span class="material-icons-outlined">
@@ -152,11 +152,8 @@
       
       <!-- display note section   -->
 
-      <div class="item-container">
         <div id="item-list" class="item-list">          
-        </div> 
-      </div>
-
+        </div>
 
       <!-- display note popup section -->
 
@@ -183,7 +180,7 @@
                 element.classList.remove("selected-color");
             });
             element.classList.add("selected-color");
-            document.getElementById("note-section").style.backgroundColor = window
+            document.getElementById("note-section").style.backgroundColor = globalThis
             .getComputedStyle(element, null)
             .getPropertyValue("background-color");
 
@@ -193,7 +190,7 @@
             .getPropertyValue("background-color");
 
             element.classList.add("selected-color");
-            document.getElementById("note").style.backgroundColor = window
+            document.getElementById("note-close").style.backgroundColor = window
             .getComputedStyle(element, null)
             .getPropertyValue("background-color");
 

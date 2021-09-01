@@ -1,3 +1,4 @@
+
 let collabList=[];
 let searchResults=[];
 let displayColabList=[];
@@ -66,7 +67,7 @@ function getNotes() {
         for(let j=0; j<res.data.data.data[i].collaborators.length; j++){
           colString += res.data.data.data[i].collaborators[i].email, " ,";
         }
-        nHTML += `<div class="item-container" >
+        nHTML += `<div class="notes">
                     <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
                       <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
                         <li style="list-style-type:none">` + res.data.data.data[i].title + " "+
@@ -106,7 +107,6 @@ function getNotes() {
                           <div class="bg-grey"></div>
                           </div>
                           </div>
-
                           <span class="material-icons-outlined">
                             photo
                           </span>
@@ -122,7 +122,7 @@ function getNotes() {
                           </button>
                           </div>
                           </div> 
-                          </div> 
+                     </div>     
                               
                         `;
       }
@@ -259,14 +259,13 @@ function addColorInDisplay(id) {
   
   function isDisplaynoteArchive(id) {
   let data = {
-  noteIdList:[id], 
-  isArchived: archive
+  noteIdList:[id], 
+  isArchived: true
   };
   archiveDisplayNote(data);
-  // getNotes();
+  getNotes();
   }
   
   function archiveDisplayNote(data) {
   return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/archiveNotes", data, headerconfig)
   }
-  
