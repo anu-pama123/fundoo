@@ -510,11 +510,27 @@ color: rgb(196, 191, 191);
   width:500px;
   height:200px;
   margin:auto;
+  border-radius: 10px;
 }  
   
 .popup-inner{
   padding:1em;
+  /* height: 200px; */
 } 
+
+.popup-close {
+  border: none;
+  background-color: white;
+}
+
+.popup-close-container {
+  padding-left: 40px;
+}
+
+.popup-title, .popup-description {
+  width: 100%;
+}
+
 input .s3-btn-close{
   position:absolute;
   top:-0.5em;
@@ -539,6 +555,10 @@ input .s3-btn-close{
   text-align: left;
   padding-top: 10px;
   padding-left: 15px;
+}
+
+.popup-title, .popup-description {
+  border: none;
 }
 
 @media only screen and (max-width: 540px) {
@@ -566,3 +586,7 @@ input .s3-btn-close{
   }
 }   
 
+.popup .material-icons-outlined {
+  padding-left: 20px;
+  padding-top: 35px;
+}

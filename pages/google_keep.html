@@ -152,19 +152,45 @@
         </div>
       </div>      
       
-      <!-- display note section   -->
+        <!-- display note section   -->
 
-      <div id="item-list" class="item-list">          
-      </div>
-
-      <!-- display note popup section -->
-
-      <div class="overlay" id="overlay" style="display:none;"></div>
-      <div class="popup" id="popup" style="display:none;">
-        <div class="popup-inner" id="popup-inner-content">    
+      <div class="item-list">
+        <div id="item-list" class="item-list">          
         </div>
-        <input type="button" name="Close" class="s3-btn-close" onclick="popupClose();" value="&times;">
-      </div>
+
+        <!-- display note popup section -->
+
+        <div class="overlay" id="overlay" style="display:none;"></div>
+        <div class="popup" id="popup" style="display:none;">
+          <div class="popup-inner" id="popup-inner-content">  
+          </div>
+          <span class="material-icons-outlined">
+            add_alert
+          </span>
+          <span class="material-icons-outlined">
+            person_add_alt
+          </span>
+          <span class="material-icons-outlined">
+            palette
+          </span>
+          <span class="material-icons-outlined">
+            photo
+          </span>
+          <span class="material-icons-outlined">
+            archive
+          </span>  
+          <span class="material-icons-outlined">
+            more_vert
+          </span> 
+          <span class="popup-close-container">
+            
+            <button type="button" class="popup-close" id="popup-close" onclick="addPopupNotes(id)">close</button> 
+          </span>
+          <input type="button" name="Close" class="s3-btn-close" onclick="popupClose();" value="&times;">
+        
+        
+        </div>
+      </div>    
     </div>
   </div> 
 

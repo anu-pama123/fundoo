@@ -69,14 +69,14 @@ function getNotes() {
         }
         nHTML += `<div class="notes">
                     <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
-                      <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
+                      <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);" onclick="addPopupNotes(id)">
                         <li style="list-style-type:none">` + res.data.data.data[i].title + " "+
                         `</li>` + 
                         `<li style="list-style-type:none">` + res.data.data.data[i].description + 
                         `</li>` + 
                         `<li style="list-style-type:none">` + colString +
                         `</li>` + 
-                      `</button>
+                      `</button>  
                       <div class="sub-buttons">
                         <span class="material-icons-outlined">
                           add_alert
@@ -135,7 +135,6 @@ function getNotes() {
 // search method for collaborator
 
 function search() {
-  console.log('search-----------')
   var email  = document.getElementById("search-email");
   var nHTML = '';
   if(email.value.length > 2) {
@@ -200,28 +199,17 @@ function popupOpen(i){
   document.getElementById("popup").style.display="block";
   document.getElementById("overlay").style.display="block";
   var nHTML = '';
-  nHTML += `                                                             
-    <button class="s3-btn" name="Open" style="background-color:`+selectedItem.color+`" id=`+i+` onclick="popupOpen(id);">
-      <li style="list-style-type:none">` + selectedItem.title + " "+
-      `</li>` + 
-      `<li style="list-style-type:none">` + selectedItem.description + 
-      `</li>` + 
-      
-    `</button>
-    <div class="sub-buttons">
-      <i class="fa fa-bell-o" aria-hidden="true"></i>
-      <button id="Button1" class="collaborator-button" value="Click" onclick="switchVisible()">
-        <i class="fa fa-user-plus" aria-hidden="true">
-        </i>
-      </button>
-      <i class="fa fa-picture-o" aria-hidden="true"></i>
-      <i class="fa fa-archive" aria-hidden="true"></i>
-      <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
-      <button id=`+ selectedItem.id +` type="button" class="delete-buttton" onclick="trashNote(id)">Delete
-      </button>
-    </div>                  
+  nHTML += `                                                           
+           <input type="text" placeholder="`+ selectedItem.title + " "+`" class="popup-title" id="popup-title" style="background-color:`+selectedItem.color+`">` + 
+          `</input>` + 
+          `<input type="text" placeholder="`+ selectedItem.description + `" class="popup-description" id="popup-description" style="background-color:`+selectedItem.color+`">` + 
+          `</input>` +       
+    `
+                  
   `
-  document.getElementById("popup-inner-content").innerHTML = nHTML;  
+  console.log(selectedItem.id);
+  document.getElementById("popup-inner-content").innerHTML = nHTML; 
+  document.getElementById("popup-close").id = selectedItem.id;
 }
 
 // display note section Popup Close method
@@ -254,19 +242,38 @@ function addColorInDisplay(id) {
     }) 
   });
   });
-  }
+}
   
-  // archive in display note section
+// archive in display note section
   
-  function isDisplaynoteArchive(id) {
-  let data = {
-  noteIdList:[id], 
-  isArchived: true
-  };
-  archiveDisplayNote(data);
+function isDisplaynoteArchive(id) {
+let data = {
+noteIdList:[id], 
+isArchived: true
+};
+archiveDisplayNote(data);
+getNotes();
+}
+
+function archiveDisplayNote(data) {
+return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/archiveNotes", data, headerconfig)
+}
+
+// popup addnote section
+
+function addPopupNotes(i) {
+  var popupTitle = document.getElementById("popup-title");
+  var popupNote = document.getElementById("popup-description");
+  let data = {"noteId": i};
+    data["title"] = popupTitle.value;
+    data["description"] = popupNote.value;
+    console.log(data)
+    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes",
+    data, headerconfig 
+  )
+  .then(res=> {
+  console.log(res.data);
+  })
   getNotes();
-  }
-  
-  function archiveDisplayNote(data) {
-  return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/archiveNotes", data, headerconfig)
-  }
+}
+
