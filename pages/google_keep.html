@@ -91,7 +91,7 @@
       <div id="Div1" class="Div1">
         <div class="all">
           <div class="note-section" id="note-section">
-            <input class="toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
+            <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
             <div id="content"> 
               <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
               <div class="addnote-collab" id="addnote-collab-h"></div>
@@ -187,8 +187,7 @@
             <button type="button" class="popup-close" id="popup-close" onclick="addPopupNotes(id)">close</button> 
           </span>
           <input type="button" name="Close" class="s3-btn-close" onclick="popupClose();" value="&times;">
-        
-        
+              
         </div>
       </div>    
     </div>
@@ -238,13 +237,12 @@
             .getComputedStyle(element, null)
             .getPropertyValue("background-color");
 
+            document.getElementById("popup").style.backgroundColor = window
+            .getComputedStyle(element, null)
+            .getPropertyValue("background-color");
         });
     });
 </script>
 
 </body>
 </html>
-
-
-
-

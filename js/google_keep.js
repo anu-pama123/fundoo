@@ -62,17 +62,17 @@ function getNotes() {
     var nHTML = '';
     notesList = res.data.data.data;
     for(let i=0; i<res.data.data.data.length; i++) {
-      if(res.data.data.data[i].isDeleted == false) {
+      if(res.data.data.data[i].isDeleted == false && res.data.data.data[i].isArchived == false) {
         let colString ="";
         for(let j=0; j<res.data.data.data[i].collaborators.length; j++){
           colString += res.data.data.data[i].collaborators[i].email, " ,";
         }
         nHTML += `<div class="notes">
                     <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
-                      <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);" onclick="addPopupNotes(id)">
-                        <li style="list-style-type:none">` + res.data.data.data[i].title + " "+
+                      <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
+                        <li id="update-title" style="list-style-type:none">` + res.data.data.data[i].title + " "+
                         `</li>` + 
-                        `<li style="list-style-type:none">` + res.data.data.data[i].description + 
+                        `<li id="update-note" style="list-style-type:none">` + res.data.data.data[i].description + 
                         `</li>` + 
                         `<li style="list-style-type:none">` + colString +
                         `</li>` + 
@@ -210,6 +210,8 @@ function popupOpen(i){
   console.log(selectedItem.id);
   document.getElementById("popup-inner-content").innerHTML = nHTML; 
   document.getElementById("popup-close").id = selectedItem.id;
+  document.getElementById("popup").style.backgroundColor = selectedItem.color;
+  document.getElementById("popup-close").style.backgroundColor = selectedItem.color;
 }
 
 // display note section Popup Close method
@@ -231,6 +233,17 @@ function addColorInDisplay(id) {
     document.getElementById("item-color").style.backgroundColor = window
     .getComputedStyle(element, null)
     .getPropertyValue("background-color");
+    document.getElementById("update-title").style.backgroundColor = window
+    .getComputedStyle(element, null)
+    .getPropertyValue("background-color");
+    document.getElementById("update-note").style.backgroundColor = window
+    .getComputedStyle(element, null)
+    .getPropertyValue("background-color");
+    document.getElementById("popup").style.backgroundColor = window
+    .getComputedStyle(element, null)
+    .getPropertyValue("background-color");
+
+
     let rgb = document.getElementById("item-color").style.backgroundColor;
     let data = {"noteIdList": [id]};
     data["color"]='#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('');
@@ -240,6 +253,7 @@ function addColorInDisplay(id) {
     .then(res=> {
     console.log(res.data);
     }) 
+    getNotes();
   });
   });
 }
