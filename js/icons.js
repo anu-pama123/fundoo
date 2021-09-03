@@ -45,5 +45,5 @@ document.getElementById("icons").innerHTML =`
     <i class="fa fa-undo" aria-hidden="true"></i>
     <i class="fa fa-repeat" aria-hidden="true"></i>
     
-    <input type="button" class="note" id="note-close" value="close" onclick="insert()" onclick="getEmail()" />
+    <input type="button" class="note" id="note-close" value="close" onclick="insert()" onclick="getEmail()"/>
 `

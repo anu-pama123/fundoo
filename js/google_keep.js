@@ -4,7 +4,7 @@ let searchResults=[];
 let displayColabList=[];
 let notesList = [];
 
-const headerconfig = {
+const headerconfig= {
   headers: { 'Content-Type': 'application/json', 
   Authorization: localStorage.getItem('token')
 }
@@ -22,11 +22,11 @@ function trashNote(id) {
     isDeleted: true,
   };
   deleteNote(data);
-  getNotes();
+  callGetNotes();
 };
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  getNotes();
+  callGetNotes();
 });
 
 // add note method
@@ -39,7 +39,7 @@ function insert() {
   let rgb = document.getElementById("note-section").style.backgroundColor;
   let data = {"title": title.value};
     data["description"] = note.value;
-    data["collaberators"] = collabList;
+    data["collaberators"] = [collabList[0]];
     data["isArchived"] = archive;
     data["color"] = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('')
     axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes",
@@ -47,18 +47,18 @@ function insert() {
   )
   .then(res=> {
   console.log(res.data);
+
   })
-  getNotes();
+  // clearNote();
+  callGetNotes();
 };
 
 // get note method
 
-function getNotes() {
-  console.log(headerconfig)
-  axios.get("http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList",
-  headerconfig 
-  )
+function callGetNotes() {
+  getService("/notes/getNotesList", headerconfig)
   .then(res=> {
+    console.log(res.data);
     var nHTML = '';
     notesList = res.data.data.data;
     for(let i=0; i<res.data.data.data.length; i++) {
@@ -67,7 +67,7 @@ function getNotes() {
         for(let j=0; j<res.data.data.data[i].collaborators.length; j++){
           colString += res.data.data.data[i].collaborators[i].email, " ,";
         }
-        nHTML += `<div class="notes">
+        nHTML += `<div class="notes" id="notes-section">
                     <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
                       <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
                         <li id="update-title" style="list-style-type:none">` + res.data.data.data[i].title + " "+
@@ -77,7 +77,7 @@ function getNotes() {
                         `<li style="list-style-type:none">` + colString +
                         `</li>` + 
                       `</button>  
-                      <div class="sub-buttons">
+                      <div class="sub-buttons" id="display-buttons">
                         <span class="material-icons-outlined">
                           add_alert
                         </span>
@@ -130,8 +130,11 @@ function getNotes() {
     }
     document.getElementById("item-list").innerHTML = nHTML;
   })
-};
-      
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
 // search method for collaborator
 
 function search() {
@@ -211,7 +214,7 @@ function popupOpen(i){
   document.getElementById("popup-inner-content").innerHTML = nHTML; 
   document.getElementById("popup-close").id = selectedItem.id;
   document.getElementById("popup").style.backgroundColor = selectedItem.color;
-  document.getElementById("popup-close").style.backgroundColor = selectedItem.color;
+  // document.getElementById("popup-close-container").style.backgroundColor = selectedItem.color;
 }
 
 // display note section Popup Close method
@@ -253,7 +256,7 @@ function addColorInDisplay(id) {
     .then(res=> {
     console.log(res.data);
     }) 
-    getNotes();
+    callGetNotes();
   });
   });
 }
@@ -266,14 +269,14 @@ noteIdList:[id],
 isArchived: true
 };
 archiveDisplayNote(data);
-getNotes();
+callGetNotes();
 }
 
 function archiveDisplayNote(data) {
 return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/archiveNotes", data, headerconfig)
 }
 
-// popup addnote section
+// popup update note section
 
 function addPopupNotes(i) {
   var popupTitle = document.getElementById("popup-title");
@@ -288,6 +291,11 @@ function addPopupNotes(i) {
   .then(res=> {
   console.log(res.data);
   })
-  getNotes();
+  callGetNotes();
 }
 
+//popup update color section
+
+// function clearNote() {
+//   location.reload(); 
+// }
