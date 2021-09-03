@@ -9,16 +9,15 @@ toggle.addEventListener("click", function() {
 
 // sidebar open and close section
 
-const sidebar = document.getElementById('sidebar');
-const trigger = document.getElementById('trigger');
-
-trigger.addEventListener('click', () => {
-    sidebar.classList.toggle('sidebar--open');
-    trigger.querySelectorAll('i').forEach(icon => {
-        icon.classList.toggle('fa-menu');
-        icon.classList.toggle('fa-times');
-    }); 
-});
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
 
 // collaborator icon opening section
 

@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/google_keep.css">
-  
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/google_keep.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
-
 <body>
-  <div class="body-content">
-    <div class="header-section">
-
-      <!-- header section -->
-
-      <nav class="header-content">
-        <span>
+  <div class="header-section">
+      <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>  
+      <span>
           <img src="../assets/icon1.png">
         </span>
         <span class="keep">Fundoo</span>
@@ -46,158 +37,166 @@
             apps
           </span>
         </span>
-      </nav>
-      
-    </div>
+  </div>
 
-    <!-- main section -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Notes</a>
+        <a href="#">Reminders</a>
+        <a href="#">Edit Labels</a>
+        <a href="#">Archive</a>
+        <a href="#">Trash</a>
+      </div>
+<div class="main-section-container">
+      <div class="main-section1">
+        <div class="nav-container">
+          <li class="note" style="list-style-type: none;">
+              <span class="material-icons-outlined">
+                  lightbulb
+              </span>
+          </li>
+          <li class="reminder" style="list-style-type: none;">
+              <span class="material-icons-outlined">
+                  notifications
+              </span>
+          </li> 
+          <li class="edit" style="list-style-type: none;">
+              <span class="material-icons-outlined">
+                  edit
+              </span>
+              </li> 
+          <li class="archive" style="list-style-type: none;">
+              <span class="material-icons-outlined">
+                  archive
+              </span>  
+          </li> 
+          <li class="trash" style="list-style-type: none;">
+              <span class="material-icons-outlined">
+                  delete
+              </span>
+          </li> 
+      </div>  
+  </div>
+    <div id="main">
+        
+        <!-- </div> -->
+        <!-- <div class="main-section2"> -->
+                      <!-- main section -->
 
     <div class="main-section">
 
-      <div id="Div1" class="Div1">
-        <div class="all">
-          <div class="note-section" id="note-section">
-            <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
-            <div id="content"> 
-              <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
-              <div class="addnote-collab" id="addnote-collab-h"></div>
-
-              <!-- icon section -->
-
-              <div id="icons"></div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- collaborator section -->
-
-      <div id="Div2">
-        <div class="Div2-contents">
-          <h1>Collaborators</h1>
-
-          <!-- owner email display section -->
-
-          <div class="default-email-container">
-            <div class="default-email" id="default-email" ></div> 
-          </div>
-
-          <!-- collaborator display section -->
-
-          <div class="collab-email" id="collab-email" ></div>
-
-          <div class="collab-dropdown">
-            <div class="dropdown">
-              <i class="fa fa-user-plus" aria-hidden="true"></i> 
-              <input class="btn btn-secondary dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="search()">          
-              </input>
-              <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
-                <i class="fa fa-check" aria-hidden="true"></i>
-                </button> 
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
-                <div id="colab-list" class="collab-list">
-                </div>
-              </ul>
-            </div>            
-          </div>
-
-          <!-- collaborator button section -->
-
-          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div classb>
-              <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-primary" onclick="switchVisible()">Cancel</button>
-                <div class="bu">                
-                  <button type="button" class="btn btn-primary" onclick="addNoteCollaborator()" onclick="insert()">Save</button>
-                </div>
+        <div id="Div1" class="Div1">
+          <div class="all">
+            <div class="note-section" id="note-section">
+              <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
+              <div id="content"> 
+                <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
+                <div class="addnote-collab" id="addnote-collab-h"></div>
+  
+                <!-- icon section -->
+  
+                <div id="icons"></div>
+                
               </div>
             </div>
-          </div>  
           </div>
         </div>
-      </div>      
-      
-      <div id="sidebar" class="sidebar">
-        <div id="trigger" class="trigger">
-          <i class="fa fa-bars"></i>
-        </div>
-        <div class="sidenav" id="left-sidenav">
-        <div class="side">
-        <div class="sidebar-position">
-        </div>
-
-        <div class="sidebar-position">
-          <i class="fa fa-user"></i>
-          <span title="Position 1 with looooong name">Notes</span>
-        </div>
-
-        <div class="sidebar-position">
-          <i class="fa fa-bell-o" aria-hidden="true"></i>
-          <span>Reminders</span>
-        </div>
-
-        <div class="sidebar-position">
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-          <span>Edit labels</span>
-        </div>
-
-        <div class="sidebar-position">
-          <i class="fa fa-file-archive-o" aria-hidden="true"></i>
-          <span>Archieve</span>
-        </div> 
-
-        <div class="sidebar-position">
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
-          <span>Trash</span>
-        </div> 
-      </div>
-      </div>
-      </div>
-
-        <!-- display note section   -->
-
-      <div class="item-list">
-        <div id="item-list" class="item-list">          
-        </div>
-
-        <!-- display note popup section -->
-
-        <div class="overlay" id="overlay" style="display:none;"></div>
-        <div class="popup" id="popup" style="display:none;">
-          <div class="popup-inner" id="popup-inner-content">  
+  
+        <!-- collaborator section -->
+  
+        <div id="Div2">
+          <div class="Div2-contents">
+            <h1>Collaborators</h1>
+  
+            <!-- owner email display section -->
+  
+            <div class="default-email-container">
+              <div class="default-email" id="default-email" ></div> 
+            </div>
+  
+            <!-- collaborator display section -->
+  
+            <div class="collab-email" id="collab-email" ></div>
+  
+            <div class="collab-dropdown">
+              <div class="dropdown">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> 
+                <input class="btn btn-secondary dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="search()">          
+                </input>
+                <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                  </button> 
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
+                  <div id="colab-list" class="collab-list">
+                  </div>
+                </ul>
+              </div>            
+            </div>
+  
+            <!-- collaborator button section -->
+  
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div classb>
+                <div class="btn-group me-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-primary" onclick="switchVisible()">Cancel</button>
+                  <div class="bu">                
+                    <button type="button" class="btn btn-primary" onclick="addNoteCollaborator()" onclick="insert()">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            </div>
           </div>
-          <span class="material-icons-outlined">
-            add_alert
-          </span>
-          <span class="material-icons-outlined">
-            person_add_alt
-          </span>
-          <!-- <button class="update-color" onclick="updatePopupColor()"> -->
+        </div>      
+        
+        
+  
+          <!-- display note section   -->
+  
+        <!-- <div class="item-list"> -->
+          <div id="item-list" class="item-list">          
+          </div>
+        </div>
+          <!-- display note popup section -->
+  
+          <div class="overlay" id="overlay" style="display:none;"></div>
+          <div class="popup" id="popup" style="display:none;">
+            <div class="popup-inner" id="popup-inner-content">  
+            </div>
             <span class="material-icons-outlined">
-              palette
+              add_alert
             </span>
-          <!-- </button>   -->
-          <span class="material-icons-outlined">
-            photo
-          </span>
-          <span class="material-icons-outlined">
-            archive
-          </span>  
-          <span class="material-icons-outlined">
-            more_vert
-          </span> 
-          <span class="popup-close-container" id="popup-close-container">
-            <button class="popup-close" id="popup-close" onclick="addPopupNotes(id), popupClose();" >close
-            </button>
+            <span class="material-icons-outlined">
+              person_add_alt
             </span>
-          </span>
+            <!-- <button class="update-color" onclick="updatePopupColor()"> -->
+              <span class="material-icons-outlined">
+                palette
+              </span>
+            <!-- </button>   -->
+            <span class="material-icons-outlined">
+              photo
+            </span>
+            <span class="material-icons-outlined">
+              archive
+            </span>  
+            <span class="material-icons-outlined">
+              more_vert
+            </span> 
+            <span class="popup-close-container" id="popup-close-container">
+              <button class="popup-close" id="popup-close" onclick="addPopupNotes(id), popupClose();" >close
+              </button>
+              </span>
+            </span>
+          </div>
+        </div>    
+      </div>
         </div>
       </div>    
     </div>
-  </div> 
-
-  <!-- js section-->
+  </div>
+    <script src="../js/new.js"></script>
+    <!-- js section-->
 
   <script src="../js/service.js"></script>
   <script src="../js/google_keep.js"></script>
@@ -249,5 +248,6 @@
     });
 </script>
 
+   
 </body>
-</html>
+</html> 

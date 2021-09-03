@@ -56,6 +56,7 @@ function insert() {
 // get note method
 
 function callGetNotes() {
+  console.log(headerconfig, "==========");  
   getService("/notes/getNotesList", headerconfig)
   .then(res=> {
     console.log(res.data);

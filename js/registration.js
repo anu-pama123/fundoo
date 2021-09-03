@@ -44,6 +44,7 @@ function validator(page_name='', urlPostfix="") {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
     };
+    console.log("====================");
     axios.post(baseurl+urlPostfix, 
         data, headers
     )
