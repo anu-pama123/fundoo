@@ -1,19 +1,13 @@
-
-let collabList=[];
-let searchResults=[];
-let displayColabList=[];
-let notesList = [];
-
 const headerconfig= {
   headers: { 'Content-Type': 'application/json', 
   Authorization: localStorage.getItem('token')
 }
 };
 
-function deleteNote(data) { 
-  let baseurl = "http://fundoonotes.incubation.bridgelabz.com/api"; 
-  return axios.post(`${baseurl}/notes/trashNotes`, data, headerconfig)
-};
+let collabList=[];
+let searchResults=[];
+let displayColabList=[];
+let notesList = [];
 
 function trashNote(id) {
   let data = {
@@ -21,9 +15,10 @@ function trashNote(id) {
     noteIdList: [id],
     isDeleted: true,
   };
-  deleteNote(data);
+  postService("/notes/trashNotes", data, headerconfig);
   callGetNotes();
 };
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
   callGetNotes();
@@ -42,21 +37,20 @@ function insert() {
     data["collaberators"] = [collabList[0]];
     data["isArchived"] = archive;
     data["color"] = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('')
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes",
-    data, headerconfig 
-  )
+    postService("/notes/addNotes", data, headerconfig)
   .then(res=> {
   console.log(res.data);
-
+  callGetNotes();
+  })
+  .catch((err) => {
+    console.log(err);
   })
   // clearNote();
-  callGetNotes();
 };
 
 // get note method
 
 function callGetNotes() {
-  console.log(headerconfig, "==========");  
   getService("/notes/getNotesList", headerconfig)
   .then(res=> {
     console.log(res.data);
@@ -119,8 +113,8 @@ function callGetNotes() {
                           
                           <button id=`+ res.data.data.data[i].id +` style="background-color:`+res.data.data.data[i].color+`" type="button" class="delete-buttton" onclick="trashNote(id)">
                             <span class="material-icons-outlined">
-                              more_vert
-                            </span> 
+                              delete
+                            </span>
                           </button>
                           </div>
                           </div> 
@@ -143,9 +137,7 @@ function search() {
   var nHTML = '';
   if(email.value.length > 2) {
     let data = { searchWord: email.value };
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/searchUserList",
-      data, headerconfig  
-    )
+    postService("/user/searchUserList", data, headerconfig)
     .then(res=> { 
       searchResults = res.data.data.details;
       for(let i=0; i< res.data.data.details.length; i++) {
@@ -153,6 +145,9 @@ function search() {
           `</div> </li>`;
       }
       document.getElementById("colab-list").innerHTML = '<ul>' + nHTML + '</ul>' ;
+    })
+    .catch((err) => {
+      console.log(err);
     })
   } 
 }; 
@@ -215,7 +210,6 @@ function popupOpen(i){
   document.getElementById("popup-inner-content").innerHTML = nHTML; 
   document.getElementById("popup-close").id = selectedItem.id;
   document.getElementById("popup").style.backgroundColor = selectedItem.color;
-  // document.getElementById("popup-close-container").style.backgroundColor = selectedItem.color;
 }
 
 // display note section Popup Close method
@@ -251,12 +245,13 @@ function addColorInDisplay(id) {
     let rgb = document.getElementById("item-color").style.backgroundColor;
     let data = {"noteIdList": [id]};
     data["color"]='#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('');
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/changesColorNotes",
-    data, headerconfig 
-    )
+    postService("/notes/changesColorNotes", data, headerconfig)
     .then(res=> {
     console.log(res.data);
     }) 
+    .catch((err) => {
+      console.log(err);
+    })
     callGetNotes();
   });
   });
@@ -265,16 +260,12 @@ function addColorInDisplay(id) {
 // archive in display note section
   
 function isDisplaynoteArchive(id) {
-let data = {
-noteIdList:[id], 
-isArchived: true
-};
-archiveDisplayNote(data);
-callGetNotes();
-}
-
-function archiveDisplayNote(data) {
-return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/archiveNotes", data, headerconfig)
+  let data = {
+  noteIdList:[id], 
+  isArchived: true
+  };
+  postService("/notes/archiveNotes",data, headerconfig);
+  callGetNotes();
 }
 
 // popup update note section
@@ -283,14 +274,15 @@ function addPopupNotes(i) {
   var popupTitle = document.getElementById("popup-title");
   var popupNote = document.getElementById("popup-description");
   let data = {"noteId": i};
-    data["title"] = popupTitle.value;
-    data["description"] = popupNote.value;
-    console.log(data)
-    axios.post("http://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes",
-    data, headerconfig 
-  )
+  data["title"] = popupTitle.value;
+  data["description"] = popupNote.value;
+  console.log(data)
+  postService("/notes/updateNotes", data, headerconfig )
   .then(res=> {
-  console.log(res.data);
+    console.log(res.data);
+  })
+  .catch((err) => {
+    console.log(err);
   })
   callGetNotes();
 }

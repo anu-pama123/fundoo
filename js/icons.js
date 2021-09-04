@@ -42,8 +42,7 @@ document.getElementById("icons").innerHTML =`
     <span class="material-icons-outlined">
         more_vert
     </span>
-    <i class="fa fa-undo" aria-hidden="true"></i>
-    <i class="fa fa-repeat" aria-hidden="true"></i>
-    
+    <span class="note-closing">
     <input type="button" class="note" id="note-close" value="close" onclick="insert()" onclick="getEmail()"/>
+    </span>
 `

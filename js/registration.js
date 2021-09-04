@@ -44,7 +44,6 @@ function validator(page_name='', urlPostfix="") {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
     };
-    console.log("====================");
     axios.post(baseurl+urlPostfix, 
         data, headers
     )
@@ -56,9 +55,9 @@ function validator(page_name='', urlPostfix="") {
             localStorage.setItem("token", res.data.id);
             localStorage.setItem("userId", res.data.userId);
             localStorage.setItem("email", data["email"]);
+            redirect();
         };
     })
-    redirect();
 }
 function redirect() {
     if(page_name==="signin"){
