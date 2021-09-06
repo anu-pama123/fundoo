@@ -55,18 +55,22 @@ function validator(page_name='', urlPostfix="") {
             localStorage.setItem("token", res.data.id);
             localStorage.setItem("userId", res.data.userId);
             localStorage.setItem("email", data["email"]);
-            redirect();
+            window.location.replace('../pages/google_keep.html');
+        };
+        if(page_name==="registration"){
+            window.location.replace('../pages/signin.html');
         };
     })
+    
 }
-function redirect() {
-    if(page_name==="signin"){
-        window.location.replace('../pages/google_keep.html')
-    }
-    if(page_name==="registration"){
-        window.location.replace('../pages/signin.html')
-    }
-}
+// function redirect() {
+//     if(page_name==="signin"){
+//         window.location.replace('../pages/google_keep.html')
+//     }
+//     if(page_name==="registration"){
+//         window.location.replace('../pages/signin.html')
+//     }
+// }
 //email validation
 
 function validateEmail() {

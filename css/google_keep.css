@@ -67,13 +67,12 @@ body {
 .sidenav {
   height: 100%;
   width: 0;
-  position: fixed;
+  position: absolute;
   z-index: 1;
-  top: 0;
-  left: 0;
+  top: 1;
+  left: 40px;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
 }
 
 .sidenav a {
@@ -102,20 +101,20 @@ body {
  
 .nav-container span{
   width: 1%;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-left: 5px;
 }  
   
 .reminder span {
-  padding-top: 23px;
+  padding-top: 25px;
 }
 
 .edit span {
-  padding-top: 23px;
+  padding-top: 26px;
 }
 
 .archive span {
-  padding-top: 23px;
+  padding-top: 30px;
 }
 
 .trash span {
@@ -165,6 +164,7 @@ textarea:focus, input:focus{
 
 .Div2-contents {
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  border: black;
   border-radius: 10px;
   height: 250px;
 }
@@ -191,6 +191,7 @@ textarea:focus, input:focus{
 .note-section-toggle {
   width: 100%;
   height: 40px;
+  border-radius: 10px;
   border: none;
   letter-spacing: .00625em;
   font-family: 'Google Sans',Roboto,Arial,sans-serif;
@@ -210,7 +211,6 @@ textarea:focus, input:focus{
 
 
 #icons .material-icons-outlined {
-  padding-left: 4px;
   color: #202124;
   opacity: 0.71;
 }
@@ -218,7 +218,7 @@ textarea:focus, input:focus{
 .sub-buttons .material-icons-outlined{
   color: #202124;
   opacity: 0.71;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 
 .Div2-contents h1 {
@@ -232,12 +232,12 @@ textarea:focus, input:focus{
 
 .me-2 {
   padding-top: 10px;
-  padding-left: 400px;
+  padding-left: 450px;
 }
 
 .btn-primary {
   color: black;
-  background-color: white;
+  background-color: rgba(243, 242, 242, 0.07);
   border: none;
 }
 
@@ -259,14 +259,16 @@ textarea:focus, input:focus{
 }
 
 .default-email-container {
-  padding-left: 28px;
+  padding-left: 46px;
+  display: flex;
+  flex-direction: row;
 }
 
 .collaborator-button {
   border: none;
   background-color: white;
 }
-.note {
+.sidenav-note {
   border: none;
   background-color: white;
   /* padding-left: 100px; */
@@ -295,7 +297,7 @@ textarea:focus, input:focus{
   font-size: 13px;
   direction: ltr;
   font-family: 'Roboto',arial,sans-serif;
-  padding-left: 25px;
+  padding-left: 40px;
 }
 
 /* icon styling */
@@ -319,13 +321,14 @@ color: rgb(196, 191, 191);
 .note {  
   border: none;
   background-color: white;
+  padding-left: 80px;
 }
   
-.note:hover {
+/* .note:hover {
   background-color: rgb(238, 235, 235);
   border-radius: 5px;
   width: 12%;
-}
+} */
 
 .delete-buttton {
   border: none;
@@ -371,6 +374,7 @@ color: rgb(196, 191, 191);
 .dropdown-toggle {
   background-color: white;
   border: none;
+  padding-bottom: 15px;
 }
 
 .dropdown-toggle::after {
@@ -379,10 +383,28 @@ color: rgb(196, 191, 191);
   border: none;
 }
 
-.dropdown-toggle:hover {
-  background-color: white;
-  color: white;
+.addnote-dropdown-toggle {
+  background-color: white !important;
+  border: none !important;
+  width: 50%;
+  color: black;
 }
+
+.dropdown-toggle:hover {
+  border-color: white;
+  background-color: white;
+}
+
+.dropdown-toggle:visited {
+  background-color: white !important;
+  border-color: white !important;
+}
+
+/* .dropdown-toggle:active:focus {
+  color: #ffffff; 
+  background-color: #161617; 
+  border-color: #494F57;
+} */
 
 .dropdown-menu {
   padding-right: 100px;
@@ -413,6 +435,7 @@ color: rgb(196, 191, 191);
 
 .collab-dropdown {
   padding-left: 25px;
+  padding-bottom: 40px;
 }
 
 /* collaborator display section */
@@ -427,6 +450,7 @@ color: rgb(196, 191, 191);
 .add-collab {
   border: none;
   background-color: white;
+  padding-left: 130px;
 }
 
 /* color pallete styling */
@@ -549,7 +573,8 @@ color: rgb(196, 191, 191);
 }
 
 .s3-btn-close {
-  border: none;
+  /* border: none; */
+  /* border-radius: 10px; */
   width: 100%;
   position: absolute;
 }
@@ -567,8 +592,9 @@ input .s3-btn-close{
 } 
 
 .s3-btn{
-  background:#f1f1f1;
-  border:none;
+  /* background:#f1f1f1; */
+  /* border:none; */
+  border-radius: 10px;
   height:50px;
   cursor:pointer;
   width: 100%; 
@@ -589,9 +615,9 @@ input .s3-btn-close{
   padding-top: 35px;
 }
 
-.dropdown-toggle {
-  padding-bottom: 20px;
-}
+/* .dropdown-toggle {
+  padding-bottom: 32px;
+} */
 
 .dropdown-toggle::after {
   content: none;
@@ -605,7 +631,18 @@ input .s3-btn-close{
   border-radius: 25px;
   padding-left: 10px;
 }    
-  
+
+.btn {
+  transition: none !important;
+}
+
+.btn-toolbar {
+  background-color: rgba(0,0,0,0.07);;
+    height: 80.1px;
+    border-radius: 10px;
+}
+
+
 /* media quaries */
 
 @media screen and (max-height: 450px) {
@@ -620,12 +657,11 @@ input .s3-btn-close{
       display: none;
   }
 
-  .note-section {
-    /* padding-left: 25px; */
+  /* .note-section {
     border: white;
     border-radius: 10px;
     width: 100%;
-  }
+  } */
 
   .Div1, #Div2 {
     width: 80%;
@@ -640,14 +676,16 @@ input .s3-btn-close{
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 729px) {
   .Div1, #Div2 {
     width: 80%;
     padding-left: 120px;
   }
-
-  .notes {
-    width: 38%;
+  .item-list {
+    padding-left: 100px;
+  }
+  .note-closing {
+    padding-left: px;
   }
 }
 
@@ -658,25 +696,75 @@ input .s3-btn-close{
   }
   .notes{
     width: 100%;
-    /* padding-right: 80px; */
   }
   .Div1 {
     padding-left: 60px;
   }
+  .item-list {
+    padding-left: 0px;
+  }
+  .note {
+    padding-left: 40px;
+  }
 }
 
-@media only screen and (max-width: 1037px) {
+@media only screen and (max-width: 1022px) {
   .Div1, #Div2 {
     width: 80%;
   }
-}
+  .me-2 {
+    padding-left: 400px;
+  }
 
-@media only screen and (max-width: 452px) {
-  .Div1{
-    width: 80%;
+  .note-closing {
     padding-left: 100px;
   }
 }
+
+
+@media only screen and (max-width: 423px) {
+  .note{
+    padding-left: 30px;
+  }
+  .popup {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Div1, .Div2{
+    width: 100%;
+    padding-left: 10px;
+  }
+  .note-closing {
+    padding-left: 5px;
+  }
+}
+
+
+
+@media only screen and (max-width: 452px) {
+  .Div1, .Div2{
+    width: 100%;
+    /* padding-right: 40px; */
+    padding-left: 10px;
+  }
+  .note-closing {
+    padding-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 313px) {
+  .note {
+    padding-left: 0px;
+  }
+
+  .popup {
+    width: 300px;
+  }
+}
+
+
 
 @media only screen and (max-width: 61px) {
   .notes{
@@ -690,18 +778,14 @@ input .s3-btn-close{
   }
 }
 
-  
-@media only screen and (max-width: 468px) {
-  .notes{
-    width: 500px;
-  }
-  
-  .Div1 {
-    padding-left: 100px;
-    width: 80%;
-  }
-}
-  
+
+
 
   
     
+
+
+
+
+
+

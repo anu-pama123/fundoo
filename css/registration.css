@@ -258,12 +258,13 @@ label {
 }
 
 .form-column-2 img {
-    width: 70%;   
+    width: 100%;   
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 540px) {
     .form-content {
         border: none;
+        /* padding-left: 40px; */
     }
 
     .form-column-2 img {
@@ -282,3 +283,16 @@ label {
         display: none;
     }
 }   
+
+@media only screen and (max-width: 723px) {
+    .form-content {
+        border: none;
+    }
+} 
+
+@media only screen and (max-width: 500px) {
+    .form-content {
+        border: none;
+        padding-left: 100px;
+    }
+} 

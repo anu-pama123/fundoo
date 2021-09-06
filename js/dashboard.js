@@ -9,26 +9,39 @@ toggle.addEventListener("click", function() {
 });
 
 // sidebar open and close section
-function changeNavState(){
-    if(navState==0){
-        navState=1;
-        openNav()
-    }else{
-        navState=0;
-        closeNav();
-    }
-}
+// function changeNavState(){
+//     if(navState==0){
+//         navState=1;
+//         openNav()
+//     }else{
+//         navState=0;
+//         closeNav();
+//     }
+// }
 
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-}
+    console.log(document.getElementById("mySidenav").style.width)
+      document.getElementById("mySidenav").style.width =document.getElementById("mySidenav").style.width==="250px"?"0px":"250px";
+      document.getElementById("main").style.marginLeft =document.getElementById("main").style.marginLeft==="250px"?"0px":"250px";
+    //   document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+    //   document.body.style.backgroundColor = "white";
+    }
+
+// function openNav() {
+//     document.getElementById("mySidenav").style.width = "250px";
+//     document.getElementById("main").style.marginLeft = "250px";
+// }
   
-  function closeNav() {
-      console.log("=============");
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-}
+//   function closeNav() {
+//       console.log("=============");
+//     document.getElementById("mySidenav").style.width = "0";
+//     document.getElementById("main").style.marginLeft= "0";
+// }
 
 // collaborator icon opening section
 

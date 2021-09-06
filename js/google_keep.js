@@ -28,24 +28,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 var note = document.getElementById("user-note");
 var title = document.getElementById("toggle");
-var archive =document.getElementById("archive-button");
+var archive = false;
 
 function insert() {
-  let rgb = document.getElementById("note-section").style.backgroundColor;
-  let data = {"title": title.value};
-    data["description"] = note.value;
-    data["collaberators"] = [collabList[0]];
-    data["isArchived"] = archive;
-    data["color"] = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('')
-    postService("/notes/addNotes", data, headerconfig)
-  .then(res=> {
-  console.log(res.data);
-  callGetNotes();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  // clearNote();
+    let rgb = document.getElementById("note-section").style.backgroundColor;
+    let data = {"title": title.value};
+      data["description"] = note.value;
+      data["isArchived"] = archive;
+      if(collabList.length>0){
+        data["collaberators"] = collabList;
+      }
+      if(rgb){
+        data["color"] = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('')
+      }
+      postService("/notes/addNotes", data, headerconfig)
+      .then(res=> {
+      console.log(res.data);
+      callGetNotes();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  clearNote();
 };
 
 // get note method
@@ -64,14 +68,14 @@ function callGetNotes() {
         }
         nHTML += `<div class="notes" id="notes-section">
                     <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
-                      <button class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
+                      <div class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
                         <li id="update-title" style="list-style-type:none">` + res.data.data.data[i].title + " "+
                         `</li>` + 
                         `<li id="update-note" style="list-style-type:none">` + res.data.data.data[i].description + 
                         `</li>` + 
                         `<li style="list-style-type:none">` + colString +
                         `</li>` + 
-                      `</button>  
+                      `</div>  
                       <div class="sub-buttons" id="display-buttons">
                         <span class="material-icons-outlined">
                           add_alert
@@ -188,8 +192,6 @@ function isArchive() {
   archive = !archive;
 }
 
-isArchive();
-
 // display note section popup Open method
 
 function popupOpen(i){
@@ -231,15 +233,18 @@ function addColorInDisplay(id) {
     document.getElementById("item-color").style.backgroundColor = window
     .getComputedStyle(element, null)
     .getPropertyValue("background-color");
-    document.getElementById("update-title").style.backgroundColor = window
+    document.getElementById("notes-section").style.backgroundColor = window
     .getComputedStyle(element, null)
     .getPropertyValue("background-color");
-    document.getElementById("update-note").style.backgroundColor = window
-    .getComputedStyle(element, null)
-    .getPropertyValue("background-color");
-    document.getElementById("popup").style.backgroundColor = window
-    .getComputedStyle(element, null)
-    .getPropertyValue("background-color");
+    // document.getElementById("update-title").style.backgroundColor = window
+    // .getComputedStyle(element, null)
+    // .getPropertyValue("background-color");
+    // document.getElementById("update-note").style.backgroundColor = window
+    // .getComputedStyle(element, null)
+    // .getPropertyValue("background-color");
+    // document.getElementById("popup").style.backgroundColor = window
+    // .getComputedStyle(element, null)
+    // .getPropertyValue("background-color");
 
 
     let rgb = document.getElementById("item-color").style.backgroundColor;
@@ -289,6 +294,6 @@ function addPopupNotes(i) {
 
 //popup update color section
 
-// function clearNote() {
-//   location.reload(); 
-// }
+function clearNote() {
+  location.reload(); 
+}
