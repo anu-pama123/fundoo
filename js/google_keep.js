@@ -34,16 +34,16 @@ function insert() {
     let rgb = document.getElementById("note-section").style.backgroundColor;
     let data = {"title": title.value};
       data["description"] = note.value;
-      data["isArchived"] = archive;
+      // data["isArchived"] = archive;
       if(collabList.length>0){
-        data["collaberators"] = collabList;
+        data["collaberators"] = [JSON.stringify(collabList)];
       }
       if(rgb){
         data["color"] = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('')
       }
       postService("/notes/addNotes", data, headerconfig)
       .then(res=> {
-      console.log(res.data);
+      console.log(res.data.daa.data);
       callGetNotes();
       })
       .catch((err) => {
@@ -57,24 +57,36 @@ function insert() {
 function callGetNotes() {
   getService("/notes/getNotesList", headerconfig)
   .then(res=> {
-    console.log(res.data);
+    // console.log(res.data);
     var nHTML = '';
     notesList = res.data.data.data;
     for(let i=0; i<res.data.data.data.length; i++) {
       if(res.data.data.data[i].isDeleted == false && res.data.data.data[i].isArchived == false) {
         let colString ="";
-        for(let j=0; j<res.data.data.data[i].collaborators.length; j++){
-          colString += res.data.data.data[i].collaborators[i].email, " ,";
+        let displayEmail = [];
+        let resCollaberators =[];
+        let displayValue ="";
+        resCollaberators = res.data.data.data[i].collaborators;
+        if(resCollaberators!==undefined && resCollaberators.length>0){
+          for(let j=0; j<resCollaberators.length; j++){
+            displayEmail.push(resCollaberators[j].email)
+          }
+        }
+        let colHTML=``;
+        for(let j=0; j<displayEmail.length; j++){
+          colHTML+=`<div style="list-style-type:none" class="display-email-section">`+ displayEmail[j].charAt(0)+`</div>`
         }
         nHTML += `<div class="notes" id="notes-section">
                     <div class="items" id="item-color" style="background-color:`+res.data.data.data[i].color+`">                                       
                       <div class="s3-btn" name="Open" style="background-color:`+res.data.data.data[i].color+`" id=`+i+` onclick="popupOpen(id);">
-                        <li id="update-title" style="list-style-type:none">` + res.data.data.data[i].title + " "+
+                        <li id="update-title" class="update-title"  style="list-style-type:none">` + res.data.data.data[i].title + " "+
                         `</li>` + 
-                        `<li id="update-note" style="list-style-type:none">` + res.data.data.data[i].description + 
+                        `<li id="update-note" class="update-note" style="list-style-type:none">` + res.data.data.data[i].description + 
                         `</li>` + 
-                        `<li style="list-style-type:none">` + colString +
-                        `</li>` + 
+                        `<div class="display_email-section-container">
+                          <div class="display-email-inner" >` + colHTML +
+                          `</div>
+                        </div>` + 
                       `</div>  
                       <div class="sub-buttons" id="display-buttons">
                         <span class="material-icons-outlined">

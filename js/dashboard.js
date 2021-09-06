@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 function getEmail() {
     let email = localStorage.getItem('email');
-    console.log(email);
+    // console.log(email);
     var nHTML = '';
     nHTML += email;
     document.getElementById("default-email").innerHTML = nHTML 

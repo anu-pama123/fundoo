@@ -125,7 +125,7 @@ body {
 
 .items {
   width: 100%;
-  min-height: 150px;
+  min-height: 170px;
   border-radius: 10px;
   border-width: 1px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
@@ -218,7 +218,6 @@ textarea:focus, input:focus{
 .sub-buttons .material-icons-outlined{
   color: #202124;
   opacity: 0.71;
-  padding-top: 6px;
 }
 
 .Div2-contents h1 {
@@ -271,17 +270,12 @@ textarea:focus, input:focus{
 .sidenav-note {
   border: none;
   background-color: white;
-  /* padding-left: 100px; */
 }
 
 .note-closing {
   padding-left: 200px;
   padding-bottom: 10px;
 }
-/* .note:hover {
-  background-color: rgb(238, 235, 235);
-  width: 12%;
-} */
 
 .person-email {
   border: none;
@@ -303,8 +297,8 @@ textarea:focus, input:focus{
 /* icon styling */
 
 .fa-undo, .fa-repeat {
-padding-left: 25px;
-color: rgb(196, 191, 191);
+  padding-left: 25px;
+  color: rgb(196, 191, 191);
 }
 .fa-repeat { 
   padding-right:110px;
@@ -323,12 +317,6 @@ color: rgb(196, 191, 191);
   background-color: white;
   padding-left: 80px;
 }
-  
-/* .note:hover {
-  background-color: rgb(238, 235, 235);
-  border-radius: 5px;
-  width: 12%;
-} */
 
 .delete-buttton {
   border: none;
@@ -351,8 +339,8 @@ color: rgb(196, 191, 191);
 
 .sub-buttons {
   display: none;
-  padding-top: 30px;
-  padding-left: 20px;
+  padding-top: 60px;
+  padding-left: 17px;
 }
 
 .items:hover .sub-buttons {
@@ -399,12 +387,6 @@ color: rgb(196, 191, 191);
   background-color: white !important;
   border-color: white !important;
 }
-
-/* .dropdown-toggle:active:focus {
-  color: #ffffff; 
-  background-color: #161617; 
-  border-color: #494F57;
-} */
 
 .dropdown-menu {
   padding-right: 100px;
@@ -565,7 +547,7 @@ color: rgb(196, 191, 191);
 }
 
 .popup-close-container {
-  padding-left: 40px;
+  padding-left: 10px;
 }
 
 .popup-title, .popup-description {
@@ -573,8 +555,6 @@ color: rgb(196, 191, 191);
 }
 
 .s3-btn-close {
-  /* border: none; */
-  /* border-radius: 10px; */
   width: 100%;
   position: absolute;
 }
@@ -592,15 +572,13 @@ input .s3-btn-close{
 } 
 
 .s3-btn{
-  /* background:#f1f1f1; */
-  /* border:none; */
   border-radius: 10px;
   height:50px;
   cursor:pointer;
   width: 100%; 
 }
 
-.s3-btn li{
+.update-title, .update-note {
   text-align: left;
   padding-top: 10px;
   padding-left: 15px;
@@ -614,10 +592,6 @@ input .s3-btn-close{
   padding-left: 20px;
   padding-top: 35px;
 }
-
-/* .dropdown-toggle {
-  padding-bottom: 32px;
-} */
 
 .dropdown-toggle::after {
   content: none;
@@ -638,10 +612,29 @@ input .s3-btn-close{
 
 .btn-toolbar {
   background-color: rgba(0,0,0,0.07);;
-    height: 80.1px;
-    border-radius: 10px;
+  height: 80.1px;
+  border-radius: 10px;
 }
 
+.display-email-section {
+  border-style: solid;
+  border-color: white;
+  background-color:thistle;
+  width: 30px;
+  border-radius: 25px;
+  padding-left: 7px;
+}
+
+.display_email-section-container {
+  padding-left: 15px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.display-email-inner {
+  display: flex;
+  padding-top: 10px;
+}
 
 /* media quaries */
 
@@ -650,27 +643,17 @@ input .s3-btn-close{
   .sidenav a {font-size: 18px;}
 }
 
-
 @media only screen and (max-width: 980px) {
 
   .search-input, .header-section .material-icons-outlined {
       display: none;
   }
-
-  /* .note-section {
-    border: white;
-    border-radius: 10px;
-    width: 100%;
-  } */
-
   .Div1, #Div2 {
     width: 80%;
-  }
-  
+  }  
 }   
 
 @media only screen and (max-width: 980px) {
-
   .Div1, #Div2 {
     width: 80%;
   }
@@ -721,7 +704,6 @@ input .s3-btn-close{
   }
 }
 
-
 @media only screen and (max-width: 423px) {
   .note{
     padding-left: 30px;
@@ -746,11 +728,19 @@ input .s3-btn-close{
 @media only screen and (max-width: 452px) {
   .Div1, .Div2{
     width: 100%;
-    /* padding-right: 40px; */
     padding-left: 10px;
   }
   .note-closing {
     padding-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 463px) {
+  .popup {
+    width: 400px;
+  }
+  .header-section img{
+    display: none;
   }
 }
 
@@ -763,8 +753,6 @@ input .s3-btn-close{
     width: 300px;
   }
 }
-
-
 
 @media only screen and (max-width: 61px) {
   .notes{

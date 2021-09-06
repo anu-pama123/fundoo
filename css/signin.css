@@ -215,8 +215,8 @@ label {
     background: #254fdb;
 }
 
-@media only screen and (max-width: 940px) {
-    .main {
+@media only screen and (max-width: 451px) {
+    .form-content {
         border: none;
     }
 }   
