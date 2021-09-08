@@ -9,11 +9,11 @@ document.getElementById("icons").innerHTML =`
     </button>
 
     <div class="btn-group dropup" id="color-palette-dropdown">
-        <button type="button" id="btn-colors" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="material-icons-outlined">
-            palette
+        <span type="button" id="btn-colors" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="material-icons-outlined">
+                palette
+            </span>
         </span>
-        </button>
         <div class="color-palette dropdown-menu" id ="color-palette">
             <div class="bg-white circled"></div>
             <div class="bg-red"></div>

@@ -82,112 +82,122 @@
       </div>  
     </div>
     <div id="main">
-        
-    <div class="main-section">
-      <div id="Div1" class="Div1">
-        <div class="all">
-          <div class="note-section" id="note-section">
-            <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
-            <div id="content"> 
-              <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
-              <div class="addnote-collab" id="addnote-collab-h"></div>
+      <div class="main-section">
+        <div id="Div1" class="Div1">
+          <div class="all">
+            <div class="note-section" id="note-section">
+              <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
+              <div id="content"> 
+                <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
+                <div class="addnote-collab" id="addnote-collab-h"></div>
 
-              <!-- icon section -->
+                <!-- icon section -->
 
-              <div id="icons"></div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- collaborator section -->
-
-      <div id="Div2">
-        <div class="Div2-contents">
-          <h1>Collaborators</h1>
-
-          <!-- owner email display section -->
-
-          <div class="default-email-container">
-            <span class="material-icons-outlined">
-              person
-              </span>
-            <div class="default-email" id="default-email" > </div> 
-          </div>
-
-          <!-- collaborator display section -->
-
-          <div class="collab-email" id="collab-email" ></div>
-
-          <div class="collab-dropdown">
-            <div class="dropdown">
-              <i class="fa fa-user-plus" aria-hidden="true"></i> 
-              <input class="btn btn-secondary addnote-dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="search()">          
-              </input>
-              <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
-                <i class="fa fa-check" aria-hidden="true"></i>
-                </button> 
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
-                <div id="colab-list" class="collab-list">
-                </div>
-              </ul>
-            </div>            
-          </div>
-
-          <!-- collaborator button section -->
-
-          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div classb>
-              <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-primary" onclick="switchVisible()">Cancel</button>
-                <div class="bu">                
-                  <button type="button" class="btn btn-primary" onclick="addNoteCollaborator()" onclick="insert()">Save</button>
-                </div>
+                <div id="icons"></div>
+                
               </div>
             </div>
-          </div>  
           </div>
         </div>
-      </div>            
 
-      <!-- display note section   -->
+        <!-- collaborator section -->
 
-      <div id="item-list" class="item-list">          
-      </div>
-    
-      <!-- display note popup section -->
+        <div id="Div2">
+          <div class="Div2-contents">
+            <h1>Collaborators</h1>
 
-      <div class="overlay" id="overlay" style="display:none;"></div>
-      <div class="popup" id="popup" style="display:none;">
-        <div class="popup-inner" id="popup-inner-content">  
+            <!-- owner email display section -->
+
+            <div class="default-email-container">
+              <span class="material-icons-outlined">
+                person
+                </span>
+              <div class="default-email" id="default-email" > </div> 
+            </div>
+
+            <!-- collaborator display section -->
+
+            <div class="collab-email" id="collab-email" ></div>
+
+            <div class="collab-dropdown">
+              <div class="dropdown">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> 
+                <input class="btn btn-secondary addnote-dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="search()">          
+                </input>
+                <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                  </button> 
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
+                  <div id="colab-list" class="collab-list">
+                  </div>
+                </ul>
+              </div>            
+            </div>
+
+            <!-- collaborator button section -->
+
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div classb>
+                <div class="btn-group me-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-primary" onclick="switchVisible()">Cancel</button>
+                  <div class="bu">                
+                    <button type="button" class="btn btn-primary" onclick="addNoteCollaborator()" onclick="insert()">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            </div>
+          </div>
+        </div>            
+
+        <!-- display note section   -->
+
+        <div id="item-list" class="item-list">         
         </div>
-        <span class="material-icons-outlined">
-          add_alert
-        </span>
-        <span class="material-icons-outlined">
-          person_add_alt
-        </span>
-        <span class="material-icons-outlined">
-          palette
-        </span>
-        <span class="material-icons-outlined">
-          photo
-        </span>
-        <span class="material-icons-outlined">
-          archive
-        </span>  
-        <span class="material-icons-outlined">
-          more_vert
-        </span> 
-        <span class="popup-close-container" id="popup-close-container">
-          <button class="popup-close" id="popup-close" onclick="addPopupNotes(id), popupClose();" >close
-          </button>
-        </span>
-      </span>
-    </div>
-  </div>    
-   
+      
+        <!-- display note popup section -->
+      
+        <div class="overlay" id="overlay" style="display:none;"></div>
+        <div class="popup" id="popup" style="display:none;">
+
+          <div class="popup-inner" id="popup-inner-content">  
+          </div>
+        
+          <div id="popup-collab-inner" class="popup-collab-inner-section">
+            <div class="popup-collab-inner-contents">
+              <h1>Collaborators</h1>
+              <div class="popup-default-email-container">
+                <span class="material-icons-outlined">
+                  person
+                </span>
+                <span class="popup-default-email" id="popup-default-email" > </span> 
+              </div>
+              <div class="update-collab-email" id="collab-email" ></div>
+              <div class="popup-update-collab-dropdown">
+                <div class="dropdown">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i> 
+                  <input class="btn btn-secondary addnote-dropdown-toggle" placeholder="Person or email to share with" id="popup-search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="popupSearch()" onkeypress="updateCollabListInMain()" onkeypress="displayUpdateCollabInCollab()">          
+                  </input>
+                  <button type="button" id="add-collab" class="add-collab">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </button> 
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
+                    <div id="popup-collab-list" class="popup-collab-list">
+                    </div>
+                  </ul>
+                </div>
+              </div>
+              <div class="button-outer">
+                <button class="inner" onclick="collabSwitchVisible()">cancel</button> 
+                <button class="inner" onclick="updateNoteCollaborator()">save</button>        
+              </div>  
+            </div>
+          </div>
+        </div>    
+    
+      </div>
+    </div> 
+
   <!-- js section-->
 
   <script src="../js/service.js"></script>
