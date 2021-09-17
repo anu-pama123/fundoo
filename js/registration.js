@@ -1,4 +1,4 @@
-var axios = require("axios");
+ var axios = require("axios");
 
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -7,7 +7,9 @@ function sleep (time) {
 function validator(page_name='', urlPostfix="") {
     console.log(page_name)
     const email = document.getElementById('email');
+    const firstName = document.getElementById('first-name');
     let data = {"email": email.value};
+    // let data = {"firstName": firstName.value};
     
     validateEmail();
     validateEmptyEmail();
@@ -48,13 +50,15 @@ function validator(page_name='', urlPostfix="") {
         data, headers
     )
     .then(res=> {
-        console.log(res)
+        console.log(res);
+        console.log(res.data);
         console.log(page_name)
         if (page_name === "signin") {
             console.log(res.data.id, res.data.userId)               
             localStorage.setItem("token", res.data.id);
             localStorage.setItem("userId", res.data.userId);
             localStorage.setItem("email", data["email"]);
+            localStorage.setItem("firstName", res.data.firstName);
             window.location.replace('../pages/google_keep.html');
         };
         if(page_name==="registration"){

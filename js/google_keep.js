@@ -10,7 +10,7 @@ let displayColabList=[];
 let notesList = [];
 let updateCollabList=[];
 let displayUpdateCollabList=[];
-let popupCollab = [];
+let popupCollab ;
 let selectedItem;
 
 function trashNote(id) {
@@ -22,7 +22,6 @@ function trashNote(id) {
   postService("/notes/trashNotes", data, headerconfig);
   callGetNotes();
 };
-
 
 window.addEventListener('DOMContentLoaded', (event) => {
   callGetNotes();
@@ -38,7 +37,6 @@ function insert() {
     let rgb = document.getElementById("note-section").style.backgroundColor;
     let data = {"title": title.value};
       data["description"] = note.value;
-      // data["isArchived"] = archive;
       if(collabList.length>0){
         data["collaberators"] = [JSON.stringify(collabList)];
       }
@@ -47,13 +45,13 @@ function insert() {
       }
       postService("/notes/addNotes", data, headerconfig)
       .then(res=> {
-      console.log(res.data.daa.data);
+      // console.log(res.data.data.data);
+      clearNote();
       callGetNotes();
       })
       .catch((err) => {
         console.log(err);
       })
-  clearNote();
 };
 
 // get note method
@@ -378,7 +376,6 @@ function addPopupNotes(i) {
   let data = {"noteId": i};
   data["title"] = popupTitle.value;
   data["description"] = popupNote.value;
-  // data["collaborators"] = [JSON.stringify(popupCollab)];
   console.log(data)
   postService("/notes/updateNotes", data, headerconfig )
   .then(res=> {
@@ -390,10 +387,23 @@ function addPopupNotes(i) {
   callGetNotes();
 }
 
-//popup update color section
+// note clear section
 
 function clearNote() {
-  location.reload(); 
+  document.querySelector("#user-note").style.display = "none";
+  document.querySelector("#icons").style.display = "none";
+  document.getElementById("toggle").value = "";
+  document.getElementById("user-note").value = "";
+  document.getElementById("note-section").style.background = "none";
+  document.getElementById("toggle").style.background = "none";
+  document.getElementById("user-note").style.background = "none";
+  document.getElementById("note-close").style.background = "none";
+}
+
+function openNote() {
+  console.log('hai')
+  document.querySelector("#user-note").style.display = "block";
+  document.querySelector("#icons").style.display = "block";
 }
 
 // search method for collaborator
@@ -452,9 +462,14 @@ function displayUpdateCollabListInMain(){
 }
 
 function updateCollabListInMain(i) {
-  let data = selectedItem;
-  data.collaborators = popupCollab
-  // data["collaborators"] = [JSON.stringify(popupCollab)];
+  let items = selectedItem;
+  console.log(items);
+  let id = items.id;
+  let data = {"id": id};
+  console.log(popupCollab);
+  // data.collaborators = popupCollab
+  // data["data"] = JSON.stringify(popupCollab[1])
+  data["data"] = popupCollab[1];
   postService("/notes/"+selectedItem.id+"/AddcollaboratorsNotes", data, headerconfig )
   .then(res=> {
     console.log(res.data);

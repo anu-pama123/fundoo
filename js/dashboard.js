@@ -8,6 +8,19 @@ toggle.addEventListener("click", function() {
     content.style.display = (content.dataset.toggled ^= 1) ? "block" : "none";
 });
 
+function noteSwitchVisible() {
+    if (document.getElementById('Div1')) {
+
+        if (document.getElementById('Div1').style.display == 'none') {
+            document.getElementById('Div1').style.display = 'block';
+            document.getElementById('Div2').style.display = 'none';
+        }
+        else {
+            document.getElementById('Div1').style.display = 'none';
+            document.getElementById('Div2').style.display = 'block';
+        }
+    } 
+}
 // side bar opening and closing method
 
 function openNav() {
@@ -59,6 +72,7 @@ console.log(email);
 
 window.addEventListener('DOMContentLoaded', (event) => {
     getEmail();
+    getFirstName(); 
 });
 
 function getEmail() {
@@ -67,7 +81,20 @@ function getEmail() {
     nHTML += email;
     document.getElementById("default-email").innerHTML = nHTML 
     document.getElementById("popup-default-email").innerHTML = nHTML 
+    document.getElementById("signout-default-email").innerHTML = nHTML 
 }
+
+function getFirstName() {
+    let name = localStorage.getItem('firstName');
+    var nHTML = '';
+    nHTML += name;
+    document.getElementById("signout-default-name").innerHTML = nHTML 
+}
+
+function clearAccount() {
+    let account = localStorage.clear();
+}
+
 
 
 

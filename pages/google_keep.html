@@ -36,9 +36,37 @@
       </span>
     </span>
     <span>
-    <span class="material-icons-outlined">
-      apps
+      <span class="material-icons-outlined">
+        apps
+      </span>
     </span>
+    <span class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="material-icons-outlined" id="user-icon">
+          person_outline
+        </span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <div class="signout-default-email-container">
+            <span class="material-icons-outlined">
+              person
+            </span>
+            <li>
+              <div class="default-name" id="signout-default-name"></div>
+            </li>
+            <span class="signout-default-email" id="signout-default-email"> </span> 
+            <li class="signout-button-container">
+              <button class="signout-button" onclick="clearAccount()">
+                signout
+              </button>
+            </li>
+          </div>
+          
+        </li>
+        
+        <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+      </ul>
     </span>
   </div>
   <div id="mySidenav" class="sidenav">
@@ -86,7 +114,7 @@
         <div id="Div1" class="Div1">
           <div class="all">
             <div class="note-section" id="note-section">
-              <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off"></input>
+              <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off" onclick="openNote()"></input>
               <div id="content"> 
                 <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
                 <div class="addnote-collab" id="addnote-collab-h"></div>

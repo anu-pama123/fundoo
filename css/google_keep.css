@@ -14,8 +14,6 @@ body {
 }
 
 #main {
-  /* display: flex;
-  flex-direction: column; */
   flex-wrap: wrap;
   transition: margin-left .5s;
   padding: 10px;
@@ -214,8 +212,6 @@ textarea:focus, input:focus{
   font-weight: 500;
 }
 
-
-
 #icons .material-icons-outlined {
   color: #202124;
   opacity: 0.71;
@@ -298,7 +294,6 @@ textarea:focus, input:focus{
   font-size: 15px;
   direction: ltr;
   font-family: 'Roboto',arial,sans-serif;
-  padding-left: 40px;
 }
 
 /* icon styling */
@@ -413,7 +408,7 @@ background-color: inherit !important;
 
 .btn {
   padding-left: 1px;
-  border-color: white;
+  border-color: inherit !important;
   background-color: inherit !important;
 }
 
@@ -660,10 +655,6 @@ input .s3-btn-close{
   border-radius: 10px;
 }
 
-.popup-default-email {
-  padding-left: 13px;
-}
-
 .popup-update-collab-dropdown .fa {
   padding-left: 20px;
 }
@@ -744,6 +735,45 @@ input .s3-btn-close{
   padding-left: 12px;
 }
 
+.btn {
+  text-align: start !important;
+  
+}
+
+.btn-check:focus+.btn, .btn:focus { 
+  box-shadow: none !important;
+}
+
+#user-icon {
+  border-style: solid;
+  border-radius: 25px;
+  width: 30px;
+  padding-left: 1px;
+}
+
+/* signout section styling */
+
+.signout-default-email-container .material-icons-outlined {
+  padding-left: 110px;
+}
+
+.default-name {
+  padding-left: 100px;
+}
+
+.signout-default-email {
+  padding-left: 60px;
+}
+
+.signout-button-container {
+  padding-left: 90px;
+}
+
+.signout-button {
+  width: 63%;
+  height: 30px;
+}
+
 /* media quaries */
 
 @media only screen and (max-width: 1184px) {
@@ -755,10 +785,7 @@ input .s3-btn-close{
   }
 
   .note-closing {
-    padding-left: 100px;
-  }
-  .note {
-    padding-left: 100px;
+    padding-left: 0px;
   }
 }
 
@@ -797,13 +824,16 @@ input .s3-btn-close{
     padding-left: 120px;
   }
   .item-list {
-    padding-left: 100px;
+    padding-left: 80px;
   }
   .note-closing {
     padding-left: px;
   }
   .note {
     padding-left: 1px;
+  }
+  .notes {
+    width: 40%;
   }
 }
 
@@ -855,6 +885,9 @@ input .s3-btn-close{
   }
   .menu {
     font-size: 20px !important;
+  }
+  .sidenav {
+    background-color: white;
   }
 }
 
