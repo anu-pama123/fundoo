@@ -6,7 +6,7 @@ body {
     font-family: "Lato", sans-serif;
     width: 100%;
     height: 100%
-  }
+}
  
 .main-section-container {
   display: flex;
@@ -47,6 +47,7 @@ body {
 
 .header-section .material-icons-outlined {
   padding-left: 30px;
+  font-size: 20px !important;
 }
 
 .header-section .menu {
@@ -57,7 +58,7 @@ body {
 .header-section img {
   padding-left: 10px;
   padding-bottom: 6px;
-  width: 4%;
+  width: 3%;
 }
 
 .header-section .keep {
@@ -169,7 +170,7 @@ textarea:focus, input:focus{
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
   border: black;
   border-radius: 10px;
-  height: 250px;
+  /* height: 210px; */
 }
 
 .Div1 {
@@ -200,6 +201,7 @@ textarea:focus, input:focus{
   font-family: 'Google Sans',Roboto,Arial,sans-serif;
   font-size: 1rem;
   font-weight: 500;
+  background-color: inherit;
 }
 
 .user-note {
@@ -210,6 +212,7 @@ textarea:focus, input:focus{
   font-family: 'Google Sans',Roboto,Arial,sans-serif;
   font-size: 1rem;
   font-weight: 500;
+  background-color: inherit;
 }
 
 #icons .material-icons-outlined {
@@ -221,6 +224,7 @@ textarea:focus, input:focus{
   color: #202124;
   opacity: 0.71;
   padding-top: 2px;
+  cursor: pointer;
 }
 
 .Div2-contents h1 {
@@ -262,6 +266,7 @@ textarea:focus, input:focus{
 
 .default-email-container {
   padding-left: 46px;
+  padding-top: 15px;
   display: flex;
   flex-direction: row;
 }
@@ -294,6 +299,7 @@ textarea:focus, input:focus{
   font-size: 15px;
   direction: ltr;
   font-family: 'Roboto',arial,sans-serif;
+  padding-left: 15px;
 }
 
 /* icon styling */
@@ -318,6 +324,7 @@ background-color: inherit !important;
   border: none;
   background-color: white;
   padding-left: 80px;
+  background-color: inherit;
 }
 
 .delete-buttton {
@@ -407,7 +414,7 @@ background-color: inherit !important;
 }
 
 .btn {
-  padding-left: 1px;
+  padding-left: 5px;
   border-color: inherit !important;
   background-color: inherit !important;
 }
@@ -420,7 +427,7 @@ background-color: inherit !important;
 
 .collab-dropdown {
   padding-left: 25px;
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
 }
 
 /* collaborator display section */
@@ -463,7 +470,7 @@ background-color: inherit !important;
 }
 
 .btn:hover {
-  border: white;
+  border-color: inherit;
 }
 
 .bg-red {
@@ -547,6 +554,7 @@ background-color: inherit !important;
   z-index: 1;
   position: relative;
   padding-left: 100px;
+  cursor: pointer;
 }
 
 .popup-close-container {
@@ -594,6 +602,47 @@ input .s3-btn-close{
 .popup .material-icons-outlined {
   padding-left: 15px;
   padding-top: 10px;
+  cursor: pointer;
+}
+
+.popup-default-email-container .material-icons-outlined {
+  padding-left: 3px;
+  padding-top: 0px;
+  border-style: solid;
+  border-radius: 25px;
+  height: 28px;
+  width: 6%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.present-icon-container {
+  padding-left: 12px;  
+}
+
+.collab-block {
+  padding-top: 15px;
+}
+
+.present-email-container {
+  padding-left: 1px;
+}
+
+.display-present-email-icon {
+  border-style: solid;
+  border-radius: 35px;
+  height: 43px;
+  width: 50%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 16px;
+  border-color: rgb(116, 115, 115);
+}
+.default-icon-area {
+  padding-left: 12px;
+  top: 12px;
 }
 
 .dropdown-toggle::after {
@@ -606,8 +655,9 @@ input .s3-btn-close{
 
 .btn-toolbar {
   background-color: rgba(0,0,0,0.07);;
-  height: 80.1px;
-  border-radius: 10px;
+  height: 62px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .display-email-section {
@@ -633,6 +683,7 @@ input .s3-btn-close{
 .popup-collab {
   display: flex;
   padding-top: 10px;
+  border: none;
 }
 
 .addnote-collab {
@@ -665,7 +716,7 @@ input .s3-btn-close{
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
   border: black;
   border-radius: 10px;
-  height: 250px;
+  /* height: 250px; */
 }
 
 .popup-collab-inner {
@@ -699,6 +750,7 @@ input .s3-btn-close{
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .inner
 {
   display: inline-block;
@@ -707,10 +759,7 @@ input .s3-btn-close{
   padding-top: 18.5px;
   padding-bottom: 18.5px;
   background-color: rgba(216, 212, 212, 0.07);
-}
-
-.popup-update-collab-dropdown {
-  padding-bottom: 58px;
+  cursor: pointer;
 }
 
 .btn-secondary {
@@ -728,7 +777,7 @@ input .s3-btn-close{
 
 #popup-palette-dropdown {
   display: inline-block;
-  padding-top: 25px;
+  padding-top: 17px;
 }
 
 .popup-collab {
@@ -748,30 +797,79 @@ input .s3-btn-close{
   border-style: solid;
   border-radius: 25px;
   width: 30px;
-  padding-left: 1px;
+  padding-left: 3px;
+  border-width: 1px;
 }
 
 /* signout section styling */
 
 .signout-default-email-container .material-icons-outlined {
-  padding-left: 110px;
+  padding-left: 130px;
 }
 
 .default-name {
-  padding-left: 100px;
+  padding-left: 110px;
+  padding-bottom: 10px
 }
 
 .signout-default-email {
-  padding-left: 60px;
+  padding-left: 70px;
 }
 
 .signout-button-container {
-  padding-left: 90px;
+  padding-left: 100px;
+  padding-top: 15px;
 }
 
 .signout-button {
   width: 63%;
   height: 30px;
+  border-color: rgb(240, 234, 234);
+}
+
+#logout-button {
+  padding-left: 20px;
+}
+
+.show {
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  border: none !important;
+}
+
+.menu {
+  font-size: 20px !important;
+}
+
+.display-present-email-section {
+  height: 50%;
+  padding-left: 4px;
+}
+
+.search-collab-section-icon {
+  padding-left: 12px;
+  padding-top: 15px;
+}
+.search-collab-section-icon .fa {
+  border-style: solid;
+  border-radius: 35px;
+  height: 29px;
+  padding-left: 7px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-color: rgb(116, 115, 115);
+}
+
+.dropdown {
+  padding-top: 15px;
+}
+
+.button-outer-section {
+  padding-top: 50px;
+}
+
+.search-email-dropdown-inner {
+  padding-left: 20px;
+  top: 20px;
 }
 
 /* media quaries */
@@ -806,8 +904,7 @@ input .s3-btn-close{
 }
 
 @media only screen and (max-width: 980px) {
-
-  .search-input, .header-section .material-icons-outlined {
+  .search-input, .refresh-icon, .grid-icon, .settings-icon, .apps-icon {
       display: none;
   }
   .Div1, #Div2 {
@@ -817,6 +914,12 @@ input .s3-btn-close{
     padding-left: 4px;
   } 
 }   
+
+@media only screen and (max-width: 770px) {
+  #logout-button{
+    padding-left: 450px;
+  }
+}
 
 @media only screen and (max-width: 729px) {
   .Div1, #Div2 {
@@ -836,6 +939,26 @@ input .s3-btn-close{
     width: 40%;
   }
 }
+
+@media only screen and (max-width: 690px) {
+  #logout-button {
+    padding-left: 380px;
+  }
+}
+
+@media only screen and (max-width: 619px) {
+  #logout-button {
+    padding-left: 300px;
+  }
+}
+
+
+@media only screen and (max-width: 532px) {
+  #logout-button{
+    padding-left: 250px;
+  }
+}
+
 
 @media only screen and (max-width: 500px) {
   .notes{
@@ -865,6 +988,13 @@ input .s3-btn-close{
   }
   .note-closing {
     padding-left: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 481px) {
+  #logout-button {
+    padding-left: 200px;
   }
 }
 
@@ -928,6 +1058,12 @@ input .s3-btn-close{
   }
 }
 
+@media only screen and (max-width: 401px) {
+  #logout-button {
+    padding-left: 150px;
+  }
+}
+
 @media only screen and (max-width: 375px) {
   .note {
     padding-left: 0px;
@@ -935,6 +1071,10 @@ input .s3-btn-close{
 
   .popup {
     width: 360px;
+  }
+
+  #logout-button {
+    padding-left: 100px;
   }
 }
 
@@ -945,6 +1085,9 @@ input .s3-btn-close{
 
   .popup {
     width: 300px;
+  }
+  #logout-button {
+    padding-left: 80px;
   }
 }
 
@@ -958,9 +1101,10 @@ input .s3-btn-close{
   .keep {
     display: none;
   }
+  #logout-button{
+    padding-left: 30px;
+  }
 }
-
-
 
 #popup-collab-inner {
   background-color: white;

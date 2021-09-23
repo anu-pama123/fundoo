@@ -12,6 +12,42 @@ let updateCollabList=[];
 let displayUpdateCollabList=[];
 let popupCollab ;
 let selectedItem;
+let updateCollab;
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  callGetNotes();
+});
+
+// ------------------add note method------------------
+
+var note = document.getElementById("user-note");
+var title = document.getElementById("toggle");
+var archive = false;
+
+function insert() {
+    let rgb = document.getElementById("note-section").style.backgroundColor;
+    console.log(rgb);
+    let colorInHex = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('');
+    console.log(colorInHex);
+    let data = {"title": title.value};
+      data["description"] = note.value;
+      if(collabList.length>0){
+        data["collaberators"] = [JSON.stringify(collabList)];
+      }
+      if(rgb){
+        data["color"] = colorInHex
+      }
+      postService("/notes/addNotes", data, headerconfig)
+      .then(res=> {
+      clearNote();
+      callGetNotes();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+};
+
+// ----------------------method for deleting note--------------------------
 
 function trashNote(id) {
   let data = {
@@ -23,38 +59,18 @@ function trashNote(id) {
   callGetNotes();
 };
 
-window.addEventListener('DOMContentLoaded', (event) => {
+// ----------------------archive in display note section----------------------
+  
+function isDisplaynoteArchive(id) {
+  let data = {
+  noteIdList:[id], 
+  isArchived: true
+  };
+  postService("/notes/archiveNotes",data, headerconfig);
   callGetNotes();
-});
+}
 
-// add note method
-
-var note = document.getElementById("user-note");
-var title = document.getElementById("toggle");
-var archive = false;
-
-function insert() {
-    let rgb = document.getElementById("note-section").style.backgroundColor;
-    let data = {"title": title.value};
-      data["description"] = note.value;
-      if(collabList.length>0){
-        data["collaberators"] = [JSON.stringify(collabList)];
-      }
-      if(rgb){
-        data["color"] = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('')
-      }
-      postService("/notes/addNotes", data, headerconfig)
-      .then(res=> {
-      // console.log(res.data.data.data);
-      clearNote();
-      callGetNotes();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-};
-
-// get note method
+// --------------------get note method----------------------
 
 function callGetNotes() {
   getService("/notes/getNotesList", headerconfig)
@@ -141,7 +157,6 @@ function callGetNotes() {
       }
     }
     document.getElementById("item-list").innerHTML = nHTML;
-    // document.getElementById("item-list").backgroundColor = selectedColor;
   })
   .catch((err) => {
     console.log(err);
@@ -191,6 +206,14 @@ function addToCollabaratorList(i){
   collabList.push(searchResults[i])
   let selectedEmail = searchResults[i].email;
   displayColabList.push(selectedEmail[0]);
+  console.log(selectedEmail);
+  let searchEmailHTML = `<span>`+
+                          `<i class="fa fa-user-plus" aria-hidden="true">`+
+                          `</i>`+
+                        `</span>`+
+                        `<span class="search-email-dropdown-inner">`+selectedEmail+`</span>`
+  console.log(searchEmailHTML);
+  document.getElementById("search-email-dropdown").innerHTML = searchEmailHTML;
 }
 
 function displayCollabListInMain(){
@@ -206,14 +229,13 @@ function isArchive() {
   archive = !archive;
 }
 
-// display note section popup Open method
+// display note section popup Open method for collaberator
 
 function displayNotePopupOpen(i, name='display_note') {
-   document.getElementById("popup").style.display="block";
-   document.getElementById("popup-collab-inner").style.display="block";
+  document.getElementById("popup").style.display="block";
+  document.getElementById("popup-collab-inner").style.display="block";
   document.getElementById("popup-inner-content").style.display="none";
-  document.getElementById("overlay").style.display="block";
-  
+  document.getElementById("overlay").style.display="block";  
   popupOpen(i);
 }
 
@@ -228,8 +250,19 @@ function popupOpen(i){
   selectedItem = notesList[i];
   console.log(selectedItem);
   let colHTML=``;
+  let presentColHTML=``;
   for(let i=0; i<selectedItem.collaborators.length; i++) {
     colHTML+=`<div style="list-style-type:none" class="display-email-section">`+ selectedItem.collaborators[i].email.charAt(0)+`</div>`
+  }
+  for(let i=0; i<selectedItem.collaborators.length; i++) {
+    presentColHTML+=`<div class="collab-block">`+
+                    `<span class="present-icon-container">`+
+                    `<span style="list-style-type:none" class="display-present-email-icon">`+ selectedItem.collaborators[i].email.charAt(0)+`</span>`+
+                    `</span>`+
+                    `<span class="present-email-container">`+
+                    `<span style="list-style-type:none" class="display-present-email-section">`+ selectedItem.collaborators[i].email+`</span>`+
+                    `</span>`+
+                    `</div>`
   }
   popupCollab = selectedItem.collaborators;
   var nHTML = '';
@@ -284,6 +317,7 @@ function popupOpen(i){
   `
   console.log(selectedItem.id);
   document.getElementById("popup-inner-content").innerHTML = nHTML; 
+  document.getElementById("present-collab").innerHTML = presentColHTML; 
   document.getElementById("popup").style.backgroundColor = selectedItem.color;
 }
 
@@ -303,18 +337,18 @@ function setSelectedItem(i){
 function addColorInDisplay(color) {
   let colorMap = {
     'white': "#ffffff",
-    'red' : "#ffc0cb", 
-    'orange' : "#ffa500", 
-    'yellow' : "#ffff00", 
-    'green' : "#00ff00",
-    'turquoise' : "#40e0d0",
-    'blue' : "#0000ff", 
-    'purple' : " #800080", 
-    'pink' : " #ffc0cb", 
-    'brown' : " #a52a2a", 
-    'grey' : "#bbbbbb"
-    }
-  console.log("=================",color);
+    'red' : "#f28b82", 
+    'orange' : "#fbbc04",
+    'yellow' : "#fff475", 
+    'green' : "#ccff90", 
+    'turquoise' : "#a7ffeb",
+    'blue' : "#cbf0f8",
+    'dark-blue' : "#aecbfa", 
+    'purple' : "#d7aefb", 
+    'pink' : "#fdcfe8", 
+    'brown' : "#e6c9a8", 
+    'grey' : "#e8eaed"
+  }
   let id = selectedItem.id;
   console.log(id)
   console.log(colorMap[color]);
@@ -355,17 +389,6 @@ function addColorInUpdate(id) {
   });
   });
 }
-  
-// archive in display note section
-  
-function isDisplaynoteArchive(id) {
-  let data = {
-  noteIdList:[id], 
-  isArchived: true
-  };
-  postService("/notes/archiveNotes",data, headerconfig);
-  callGetNotes();
-}
 
 // popup update note section
 
@@ -392,18 +415,20 @@ function addPopupNotes(i) {
 function clearNote() {
   document.querySelector("#user-note").style.display = "none";
   document.querySelector("#icons").style.display = "none";
+  document.querySelector("#addnote-collab-h").style.display = "none";
   document.getElementById("toggle").value = "";
   document.getElementById("user-note").value = "";
+  document.getElementById("addnote-collab-h").value = "";
   document.getElementById("note-section").style.background = "none";
-  document.getElementById("toggle").style.background = "none";
-  document.getElementById("user-note").style.background = "none";
-  document.getElementById("note-close").style.background = "none";
+  document.getElementById("addnote-collab-h").innerHTML = ``;
+  collabList=[];
+  // searchResults=[];
 }
 
 function openNote() {
-  console.log('hai')
   document.querySelector("#user-note").style.display = "block";
   document.querySelector("#icons").style.display = "block";
+  document.querySelector("#addnote-collab-h").style.display = "block";
 }
 
 // search method for collaborator
@@ -437,11 +462,11 @@ function updateNoteCollaborator() {
 }
 
 function addToUpdateCollabaratorList(i){
-  popupCollab.push(searchResults[i])
+  updateCollab = searchResults[i];
+  popupCollab.push(searchResults[i]);
 }
 
-function displayUpdateCollabInCollab () {
-  
+function displayUpdateCollabInCollab () {  
   var colab  = document.getElementById("popup-search-email");
   let colHTML=``;
   for(let i=0; i<popupCollab.length; i++) {
@@ -451,26 +476,25 @@ function displayUpdateCollabInCollab () {
   
 }
 
-
 function displayUpdateCollabListInMain(){
   var colab  = document.getElementById("popup-collab-section");
+  var colabInSearch = document.getElementsByClassName("popup-search-email");
+  console.log(popupCollab);
   let colHTML=``;
   for(let i=0; i<popupCollab.length; i++) {
     colHTML+=`<div style="list-style-type:none" class="display-email-section">`+ popupCollab[i].email.charAt(0)+`</div>`
   }
   colab.innerHTML = colHTML;
+  colabInSearch.innerHTML = colHTML;
+
 }
 
 function updateCollabListInMain(i) {
   let items = selectedItem;
   console.log(items);
   let id = items.id;
-  let data = {"id": id};
   console.log(popupCollab);
-  // data.collaborators = popupCollab
-  // data["data"] = JSON.stringify(popupCollab[1])
-  data["data"] = popupCollab[1];
-  postService("/notes/"+selectedItem.id+"/AddcollaboratorsNotes", data, headerconfig )
+  postService("/notes/"+selectedItem.id+"/AddcollaboratorsNotes",updateCollab, headerconfig )
   .then(res=> {
     console.log(res.data);
   })
@@ -479,3 +503,4 @@ function updateCollabListInMain(i) {
   })
   callGetNotes();
 }
+
