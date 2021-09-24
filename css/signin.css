@@ -215,10 +215,21 @@ label {
     background: #254fdb;
 }
 
-@media only screen and (max-width: 451px) {
+@media only screen and (max-width: 400px) {
     .form-content {
         border: none;
+    }
+    .floating-label {
+        padding-right: 15px !important;
     }
 }   
 
 
+@media only screen and (min-device-width: 400px) and (max-device-width: 750px) {
+    .form-content {
+        border: none;
+    }
+    .floating-label {
+        padding-right: 30px !important;
+    }
+}

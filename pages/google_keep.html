@@ -105,12 +105,12 @@
           </span>
         </li> 
         <li class="archive" style="list-style-type: none;">
-          <span class="material-icons-outlined">
+          <span class="material-icons-outlined" onclick="getArchiveNote()">
             archive
           </span>  
         </li> 
         <li class="trash" style="list-style-type: none;">
-          <span class="material-icons-outlined">
+          <span class="material-icons-outlined" onclick="getTrashNoteList()">
             delete
           </span>
         </li> 
@@ -162,7 +162,7 @@
                 <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
                   <i class="fa fa-check" aria-hidden="true"></i>
                   </button> 
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
+                <ul>                
                   <div id="colab-list" class="collab-list">
                   </div>
                 </ul>

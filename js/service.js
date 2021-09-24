@@ -21,3 +21,12 @@ function postService(url, data, headerconfig) {
 }
 
 
+function gettrashService(url,{}, headerconfig) {   
+
+  console.log(url, headerconfig);
+  return new Promise (function(resolve, reject) {
+    var resolved = axios.get(baseurl + url, headerconfig);
+    resolve(resolved);
+  })
+  
+}

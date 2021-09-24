@@ -10,6 +10,8 @@ let displayColabList=[];
 let notesList = [];
 let updateCollabList=[];
 let displayUpdateCollabList=[];
+let trashList=[];
+let archiveList=[];
 let popupCollab ;
 let selectedItem;
 let updateCollab;
@@ -26,16 +28,18 @@ var archive = false;
 
 function insert() {
     let rgb = document.getElementById("note-section").style.backgroundColor;
-    console.log(rgb);
-    let colorInHex = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('');
-    console.log(colorInHex);
+    console.log(rgb, "=========");
     let data = {"title": title.value};
       data["description"] = note.value;
       if(collabList.length>0){
         data["collaberators"] = [JSON.stringify(collabList)];
       }
-      if(rgb){
-        data["color"] = colorInHex
+      if (rgb !==""){
+        let colorInHex = '#' + rgb.slice(4,-1).split(',').map(x => (+x).toString(16).padStart(2,0)).join('');
+        if(colorInHex!='#NaN'){
+          data["color"] = colorInHex;
+          console.log(colorInHex);
+        }
       }
       postService("/notes/addNotes", data, headerconfig)
       .then(res=> {
@@ -59,6 +63,61 @@ function trashNote(id) {
   callGetNotes();
 };
 
+function getTrashNoteList() {
+  gettrashService('/notes/getTrashNotesList', {}, headerconfig)
+    .then((res) => {
+      console.log(res,'====================+++++++')
+      trashList = res.data.data.data;
+      var nHTML = '';
+      for(let i=0; i<res.data.data.data.length; i++) {
+        nHTML += `<div class="notes" id=`+String(res.data.data.data[i].id)+`" style="background-color:`+res.data.data.data[i].color+`">
+                  <div class="items" id="item-color" >                                       
+                    <div class="s3-btn" name="Open"  id=`+i+` onclick="updateNotePopupOpen(id, name='update_note');">`+
+                      `<li id="update-title" class="update-title"  style="list-style-type:none">` + res.data.data.data[i].title + " "+
+                        `</li>` + 
+                        `<li id="update-note" class="update-note" style="list-style-type:none">` + res.data.data.data[i].description + 
+                        `</li>` + 
+                    `</div>`+
+                    `<div class="sub-buttons" id="display-buttons">`+
+                        `<span class="material-icons-outlined" id=`+i+` onclick="unTrashNote(id)">
+                          delete
+                        </span>`+
+                  `</div>`+
+                  `</div>`+  
+                `</div>` 
+                
+                
+      }
+      document.getElementById("item-list").innerHTML = nHTML;
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+
+// ----------------method to restore deleted notes--------------------------
+
+function unTrashNote(i) {
+  console.log(trashList)
+  let id = trashList[i].id;
+  let data = {
+    noteIdList: [id],
+    isDeleted: false
+
+  }
+  postService('/notes/trashNotes', data, headerconfig)
+    .then((res) => {
+      console.log(res);
+      callGetNotes();
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+
 // ----------------------archive in display note section----------------------
   
 function isDisplaynoteArchive(id) {
@@ -69,6 +128,57 @@ function isDisplaynoteArchive(id) {
   postService("/notes/archiveNotes",data, headerconfig);
   callGetNotes();
 }
+
+function getArchiveNote() {
+  gettrashService('/notes/getArchiveNotesList', {}, headerconfig)
+    .then((res) => {
+      console.log(res.data.data.data);
+      archiveList = res.data.data.data;
+      var nHTML = '';
+      for(let i=0; i<res.data.data.data.length; i++) {
+        nHTML += `<div class="notes" id=`+String(res.data.data.data[i].id)+`" style="background-color:`+res.data.data.data[i].color+`">
+                  <div class="items" id="item-color" >                                       
+                    <div class="s3-btn" name="Open"  id=`+i+` onclick="updateNotePopupOpen(id, name='update_note');">`+
+                      `<li id="update-title" class="update-title"  style="list-style-type:none">` + res.data.data.data[i].title + " "+
+                        `</li>` + 
+                        `<li id="update-note" class="update-note" style="list-style-type:none">` + res.data.data.data[i].description + 
+                        `</li>` + 
+                    `</div>`+
+                    `<div class="sub-buttons" id="display-buttons">`+
+                        `<span class="material-icons-outlined" id=`+i+` onclick="unArchiveNote(id)">
+                          archive
+                        </span>`+
+                  `</div>`+
+                  `</div>`+  
+                `</div>` 
+                
+                
+      }
+      document.getElementById("item-list").innerHTML = nHTML;
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+//---------------------to restore archived notes-------------------
+
+function unArchiveNote(i) {
+  let id = archiveList[i].id;
+  let data = {
+    noteIdList: [id],
+    isArchived: false
+
+  }
+  postService('/notes/archiveNotes', data, headerconfig)
+    .then((res) => {
+      console.log(res)
+      callGetNotes();
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 
 // --------------------get note method----------------------
 
@@ -213,7 +323,7 @@ function addToCollabaratorList(i){
                         `</span>`+
                         `<span class="search-email-dropdown-inner">`+selectedEmail+`</span>`
   console.log(searchEmailHTML);
-  document.getElementById("search-email-dropdown").innerHTML = searchEmailHTML;
+  document.getElementById("colab-list").innerHTML = searchEmailHTML;
 }
 
 function displayCollabListInMain(){
@@ -421,7 +531,9 @@ function clearNote() {
   document.getElementById("addnote-collab-h").value = "";
   document.getElementById("note-section").style.background = "none";
   document.getElementById("addnote-collab-h").innerHTML = ``;
+  document.getElementById("colab-list").innerHTML = ``
   collabList=[];
+  displayColabList = [];
   // searchResults=[];
 }
 
@@ -430,6 +542,12 @@ function openNote() {
   document.querySelector("#icons").style.display = "block";
   document.querySelector("#addnote-collab-h").style.display = "block";
 }
+
+// function closeNote() {
+//   document.querySelector("#toggle").style.display = "none";
+//   document.querySelector("#icons").style.display = "none";
+//   document.querySelector("#addnote-collab-h").style.display = "none";
+// }
 
 // search method for collaborator
 

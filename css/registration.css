@@ -7,6 +7,7 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .body-content {
@@ -261,36 +262,138 @@ label {
     width: 100%;   
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 400px) {
     .form-content {
         border: none;
+        justify-content: left;
     }
-
+    .form-column-1 {
+        padding-left: 2px !important;
+        width: 100%;
+    }
     .form-column-2 img {
         display: none;   
     }
 
-    .form-column-2 h1, h2 {        
-        display: none;
-    }
-
     .floating-input {
-        width: 370px;
+        width: 335px;
+    }
+    .floating-input[type="email"] {
+        width: 335px;
+    }
+    .form-column-2 {
+        display: none;
     }
 
     .footer-section {
         display: none;
     }
+    .section1-header {
+        padding-top: 70px;
+    }
+    .section1-header h2 {
+        font-size: 16px;
+        padding-top: 8px;
+    }
+    .submit-button {
+        margin: 1px 0 50px 160px;
+    }
 }   
 
-@media only screen and (max-width: 723px) {
+@media only screen and (min-device-width: 400px) and (max-device-width: 600px) {
     .form-content {
         border: none;
+        justify-content: left;
     }
-} 
+    .form-column-1 {
+        padding-left: 2px !important;
+        width: 100%;
+    }
+    .form-column-2 img {
+        display: none;   
+    }
 
-@media only screen and (max-width: 500px) {
+    .floating-input {
+        width: 385px;
+    }
+    .floating-input[type="email"] {
+        width: 385px;
+    }
+    .form-column-2 {
+        display: none;
+    }
+
+    .footer-section {
+        display: none;
+    }
+    .section1-header {
+        padding-top: 32px;
+    }
+    .section1-header h2 {
+        font-size: 18px;
+        padding-top: 15px;
+    }
+    .submit-button {
+        margin: 1px 0 50px 200px;
+    }
+}
+@media only screen and (min-device-width: 600px) and (max-device-width: 755px) {
     .form-content {
         border: none;
+        justify-content: left;
     }
-} 
+    .form-column-1 {
+        padding-left: 2px !important;
+        width: 100%;
+    }
+    .form-column-2 img {
+        display: none;   
+    }
+
+    .floating-input {
+        width: 385px;
+    }
+    .floating-input[type="email"] {
+        width: 385px;
+    }
+    .form-column-2 {
+        display: none;
+    }
+
+    .footer-section {
+        display: none;
+    }
+    .section1-header {
+        padding-top: 32px;
+    }
+    .section1-header h2 {
+        font-size: 18px;
+        padding-top: 15px;
+    }
+    .submit-button {
+        margin: 1px 0 50px 200px;
+    }
+}
+
+@media only screen and (min-device-width: 755px) and (max-device-width: 1100px) {
+    .form-column-2 img {
+        display: none;   
+    }
+    .form-column-2 {
+        display: none;
+    }   
+    .form-content {
+        height: 72%;
+    }
+    .form-column-1 {
+        padding-left: 2px !important;
+        width: 100%;
+    }
+    .section1-header {
+        padding-top: 1px;
+        height: 100px;
+    }
+    .submit-button {
+        margin: 1px 0 50px 200px;
+    }
+}

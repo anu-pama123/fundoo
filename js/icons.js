@@ -7,7 +7,7 @@ document.getElementById("icons").innerHTML =`
             person_add_alt
         </span>
     </button>
-
+    
     <div class="btn-group dropup" id="color-palette-dropdown">
         <span type="button" id="btn-colors" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="material-icons-outlined">
