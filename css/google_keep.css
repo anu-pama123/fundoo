@@ -142,8 +142,6 @@ body {
   border-radius: 10px;
 }
 
-
-
 .item-list {
   display: flex;
   flex-direction: row;
@@ -662,8 +660,8 @@ input .s3-btn-close{
 }
 
 .display-email-section {
-  border-style: solid;
-  border-color: white;
+  border-style:groove;
+  border-color: rgb(124, 122, 122);
   background-color:thistle;
   width: 30px;
   border-radius: 25px;
@@ -745,7 +743,7 @@ input .s3-btn-close{
 .button-outer
 {
   width:100%;
-  text-align: cen ter;
+  text-align: center;
   padding-left: 350px;
   background-color:rgba(0,0,0,0.07);
   border-bottom-left-radius: 10px;
@@ -877,6 +875,10 @@ input .s3-btn-close{
   background-color: white;
 }
 
+.col-section {
+  padding-left: 10px;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -922,7 +924,7 @@ input .s3-btn-close{
     width: 100%;
   }
   #logout-button {
-    padding-left: 70px;
+    padding-left: 120px;
     padding-top: 10px;
   }
   .dropdown-toggle {
@@ -1005,7 +1007,7 @@ input .s3-btn-close{
     width: 100%;
   }
   #logout-button {
-    padding-left: 130px;
+    padding-left: 150px;
     padding-top: 10px;
   }
   .dropdown-toggle {
@@ -1106,9 +1108,9 @@ input .s3-btn-close{
     display: none;
   }
   .Div1 {
-    padding-left: 150px;
+    padding-left: 20px;
     padding-top: 25px;
-    width: 85%;
+    width: 100%;
   }
   .header-section {
     padding-top: 20px;

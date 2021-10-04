@@ -27,11 +27,15 @@ function openNav() {
     console.log(document.getElementById("mySidenav").style.width)
     document.getElementById("mySidenav").style.width =document.getElementById("mySidenav").style.width==="250px"?"0px":"250px";
     document.getElementById("main").style.marginLeft =document.getElementById("main").style.marginLeft==="250px"?"0px":"250px";
+    // document.getElementById("item-list").style.width="100%";
+    // document.getElementById("Div1").style.width="100%"
+
 }
     
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
+    // document.getElementById("Div1").style.width="70%"
 }
 
 // collaborator icon opening method

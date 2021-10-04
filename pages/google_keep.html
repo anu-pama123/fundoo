@@ -119,14 +119,14 @@
     <div id="main">
       <div class="main-section">
         <div id="Div1" class="Div1">
-          <div class="all">
+          <div class="all" id="all-content">
             <div class="note-section" id="note-section">
               <input class="note-section-toggle" id="toggle" placeholder="Title" autocomplete="off" onclick="openNote()"></input>
               <div id="content"> 
                 <input class="user-note" type="text" id="user-note" placeholder="Take a note..." autocomplete="off"> </input>
                 <div class="addnote-collab" id="addnote-collab-h"></div>
 
-                <!-- icon section -->
+                <!-- icon section --> 
 
                 <div id="icons"></div>
                 
@@ -157,12 +157,12 @@
             <div class="collab-dropdown">
               <div class="dropdown" id="search-email-dropdown">
                 <i class="fa fa-user-plus" aria-hidden="true"></i> 
-                <input class="btn btn-secondary addnote-dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" onkeypress="search()">          
+                <input class="btn btn-secondary addnote-dropdown-toggle" placeholder="Person or email to share with" id="search-email" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" oninput="search()">          
                 </input>
                 <button type="button" id="add-collab" class="add-collab" onclick="addCollaborator()" onkeypress="displayCollaborator()">
                   <i class="fa fa-check" aria-hidden="true"></i>
                   </button> 
-                <ul>                
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">                
                   <div id="colab-list" class="collab-list">
                   </div>
                 </ul>

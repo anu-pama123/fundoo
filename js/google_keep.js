@@ -66,7 +66,6 @@ function trashNote(id) {
 function getTrashNoteList() {
   gettrashService('/notes/getTrashNotesList', {}, headerconfig)
     .then((res) => {
-      console.log(res,'====================+++++++')
       trashList = res.data.data.data;
       var nHTML = '';
       for(let i=0; i<res.data.data.data.length; i++) {
@@ -84,9 +83,7 @@ function getTrashNoteList() {
                         </span>`+
                   `</div>`+
                   `</div>`+  
-                `</div>` 
-                
-                
+                `</div>`                 
       }
       document.getElementById("item-list").innerHTML = nHTML;
     })
@@ -160,7 +157,7 @@ function getArchiveNote() {
       console.log(err)
     })
 }
-//---------------------to restore archived notes-------------------
+//---------------------method to restore archived notes-------------------
 
 function unArchiveNote(i) {
   let id = archiveList[i].id;
@@ -317,13 +314,11 @@ function addToCollabaratorList(i){
   let selectedEmail = searchResults[i].email;
   displayColabList.push(selectedEmail[0]);
   console.log(selectedEmail);
-  let searchEmailHTML = `<span>`+
-                          `<i class="fa fa-user-plus" aria-hidden="true">`+
-                          `</i>`+
-                        `</span>`+
-                        `<span class="search-email-dropdown-inner">`+selectedEmail+`</span>`
+  let searchEmailHTML = selectedEmail
   console.log(searchEmailHTML);
-  document.getElementById("colab-list").innerHTML = searchEmailHTML;
+  document.getElementById("search-email").value=selectedEmail;
+  // document.getElementById("colab-list").innerHTML = searchEmailHTML;
+  // document.getElementById("colab-list").innerHTML = searchEmailHTML;
 }
 
 function displayCollabListInMain(){
@@ -377,9 +372,9 @@ function popupOpen(i){
   popupCollab = selectedItem.collaborators;
   var nHTML = '';
   nHTML += `                                                          
-           <input type="text" class="popup-title" autocomplete="off" placeholder="`+ selectedItem.title + " "+`" class="popup-title" id="popup-title">` + 
+           <input type="text" class="popup-title" autocomplete="off" value="`+ selectedItem.title + " "+`" class="popup-title" id="popup-title">` + 
           `</input>` + 
-          `<input type="text" class="popup-note" autocomplete="off" placeholder="`+ selectedItem.description + `" class="popup-description" id="popup-description">` + 
+          `<input type="text" class="popup-note" autocomplete="off" value="`+ selectedItem.description + `" class="popup-description" id="popup-description">` + 
           `</input>` +   
            `<div type="button" class="popup-collab" id="popup-collab-section"> `+colHTML +`</div>
             <div class="btn-group dropup" id="popup-palette-dropdown">
@@ -506,6 +501,7 @@ function addPopupNotes(i) {
   var popupTitle = document.getElementById("popup-title");
   var popupNote = document.getElementById("popup-description");
   
+  if(title.value == selectedItem.title || title.value != selectedItem.title) {
   let data = {"noteId": i};
   data["title"] = popupTitle.value;
   data["description"] = popupNote.value;
@@ -519,6 +515,7 @@ function addPopupNotes(i) {
   })
   callGetNotes();
 }
+}
 
 // note clear section
 
@@ -529,6 +526,7 @@ function clearNote() {
   document.getElementById("toggle").value = "";
   document.getElementById("user-note").value = "";
   document.getElementById("addnote-collab-h").value = "";
+  document.getElementById("search-email").value = "";
   document.getElementById("note-section").style.background = "none";
   document.getElementById("addnote-collab-h").innerHTML = ``;
   document.getElementById("colab-list").innerHTML = ``
@@ -543,22 +541,24 @@ function openNote() {
   document.querySelector("#addnote-collab-h").style.display = "block";
 }
 
-// function closeNote() {
-//   document.querySelector("#toggle").style.display = "none";
-//   document.querySelector("#icons").style.display = "none";
-//   document.querySelector("#addnote-collab-h").style.display = "none";
-// }
+function closeNote() {
+  document.querySelector("#toggle").style.display = "none";
+  document.querySelector("#icons").style.display = "none";
+  document.querySelector("#addnote-collab-h").style.display = "none";
+}
 
 // search method for collaborator
 
 function popupSearch() {
   var email  = document.getElementById("popup-search-email");
-  var nHTML = '';
+  var nHTML = ''; 
   if(email.value.length > 2) {
     let data = { searchWord: email.value };
     postService("/user/searchUserList", data, headerconfig)
     .then(res=> { 
       searchResults = res.data.data.details;
+      // var printSearchResult = searchResults.email;
+      // console.log(printSearchResult);
       for(let i=0; i< res.data.data.details.length; i++) {
         nHTML += ` <li style="list-style-type:none"><div id="`+ i +`" onclick=addToUpdateCollabaratorList(id) >` + res.data.data.details[i].email+
           `</div> </li>`;
