@@ -29,13 +29,14 @@ function openNav() {
     document.getElementById("main").style.marginLeft =document.getElementById("main").style.marginLeft==="250px"?"0px":"250px";
     // document.getElementById("item-list").style.width="100%";
     // document.getElementById("Div1").style.width="100%"
+    // document.getElementById("Div1").style.width="80%"
 
 }
     
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
-    // document.getElementById("Div1").style.width="70%"
+    // document.getElementById("Div1").style.width="80%"
 }
 
 // collaborator icon opening method

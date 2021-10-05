@@ -29,8 +29,11 @@ var archive = false;
 function insert() {
     let rgb = document.getElementById("note-section").style.backgroundColor;
     console.log(rgb, "=========");
+    let data;
+    if(title.value != null && note.value != null) {
     let data = {"title": title.value};
       data["description"] = note.value;
+    
       if(collabList.length>0){
         data["collaberators"] = [JSON.stringify(collabList)];
       }
@@ -42,13 +45,14 @@ function insert() {
         }
       }
       postService("/notes/addNotes", data, headerconfig)
-      .then(res=> {
-      clearNote();
+      .then(res=> { 
       callGetNotes();
       })
       .catch((err) => {
         console.log(err);
       })
+      clearNote(); 
+    }
 };
 
 // ----------------------method for deleting note--------------------------
@@ -317,8 +321,6 @@ function addToCollabaratorList(i){
   let searchEmailHTML = selectedEmail
   console.log(searchEmailHTML);
   document.getElementById("search-email").value=selectedEmail;
-  // document.getElementById("colab-list").innerHTML = searchEmailHTML;
-  // document.getElementById("colab-list").innerHTML = searchEmailHTML;
 }
 
 function displayCollabListInMain(){
@@ -415,10 +417,8 @@ function popupOpen(i){
             </span> 
               <span class="popup-close" id="`+ selectedItem.id + `" onclick="addPopupNotes(id), popupClose();" >close
               </span>
-            </span>`+ 
-          
-       `
-                  
+            </span>`+           
+       `                  
   `
   console.log(selectedItem.id);
   document.getElementById("popup-inner-content").innerHTML = nHTML; 
@@ -501,7 +501,6 @@ function addPopupNotes(i) {
   var popupTitle = document.getElementById("popup-title");
   var popupNote = document.getElementById("popup-description");
   
-  if(title.value == selectedItem.title || title.value != selectedItem.title) {
   let data = {"noteId": i};
   data["title"] = popupTitle.value;
   data["description"] = popupNote.value;
@@ -514,7 +513,6 @@ function addPopupNotes(i) {
     console.log(err);
   })
   callGetNotes();
-}
 }
 
 // note clear section
@@ -535,16 +533,14 @@ function clearNote() {
   // searchResults=[];
 }
 
+function clearCollab() {
+  document.getElementById("popup-search-email").value = "";
+}
+
 function openNote() {
   document.querySelector("#user-note").style.display = "block";
   document.querySelector("#icons").style.display = "block";
   document.querySelector("#addnote-collab-h").style.display = "block";
-}
-
-function closeNote() {
-  document.querySelector("#toggle").style.display = "none";
-  document.querySelector("#icons").style.display = "none";
-  document.querySelector("#addnote-collab-h").style.display = "none";
 }
 
 // search method for collaborator
@@ -557,8 +553,6 @@ function popupSearch() {
     postService("/user/searchUserList", data, headerconfig)
     .then(res=> { 
       searchResults = res.data.data.details;
-      // var printSearchResult = searchResults.email;
-      // console.log(printSearchResult);
       for(let i=0; i< res.data.data.details.length; i++) {
         nHTML += ` <li style="list-style-type:none"><div id="`+ i +`" onclick=addToUpdateCollabaratorList(id) >` + res.data.data.details[i].email+
           `</div> </li>`;
@@ -577,11 +571,15 @@ function updateNoteCollaborator() {
   collabSwitchVisible();
   displayUpdateCollabListInMain();
   updateCollabListInMain()
+  clearCollab();
 }
 
 function addToUpdateCollabaratorList(i){
   updateCollab = searchResults[i];
+  console.log(updateCollab.email);
   popupCollab.push(searchResults[i]);
+  let email = updateCollab.email;
+  document.getElementById("popup-search-email").value= email;
 }
 
 function displayUpdateCollabInCollab () {  
@@ -598,6 +596,7 @@ function displayUpdateCollabListInMain(){
   var colab  = document.getElementById("popup-collab-section");
   var colabInSearch = document.getElementsByClassName("popup-search-email");
   console.log(popupCollab);
+  console.log()
   let colHTML=``;
   for(let i=0; i<popupCollab.length; i++) {
     colHTML+=`<div style="list-style-type:none" class="display-email-section">`+ popupCollab[i].email.charAt(0)+`</div>`

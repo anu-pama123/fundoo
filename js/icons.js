@@ -43,7 +43,7 @@ document.getElementById("icons").innerHTML =`
         more_vert
     </span>
     <span class="note-closing">
-    <input type="button" class="note" id="note-close" value="close" onclick="insert()" onclick="getEmail()" onclick="closeNote()"/>
+    <input type="button" class="note" id="note-close" value="close" onclick="insert()" onclick="getEmail()"/>
     </span>
 `
 

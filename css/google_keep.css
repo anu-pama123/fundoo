@@ -222,8 +222,9 @@ textarea:focus, input:focus{
 .sub-buttons .material-icons-outlined{
   color: #202124;
   opacity: 0.71;
-  padding-top: 2px;
+  padding-top: 4px;
   cursor: pointer;
+  font-size: 22px !important;
 }
 
 .Div2-contents h1 {
@@ -298,7 +299,7 @@ textarea:focus, input:focus{
   font-size: 15px;
   direction: ltr;
   font-family: 'Roboto',arial,sans-serif;
-  padding-left: 15px;
+  padding-left: 4px;
 }
 
 /* icon styling */
@@ -370,7 +371,7 @@ background-color: inherit !important;
 .dropdown-toggle {
   background-color: white;
   border: none;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
 }
 
 .dropdown-toggle::after {
@@ -413,7 +414,7 @@ background-color: inherit !important;
 }
 
 .btn {
-  padding-left: 5px;
+  padding-left: 2px;
   border-color: inherit !important;
   background-color: inherit !important;
 }
@@ -426,7 +427,6 @@ background-color: inherit !important;
 
 .collab-dropdown {
   padding-left: 25px;
-  /* padding-bottom: 40px; */
 }
 
 /* collaborator display section */
@@ -661,7 +661,7 @@ input .s3-btn-close{
 
 .display-email-section {
   border-style:groove;
-  border-color: rgb(124, 122, 122);
+  border-color: rgb(172, 169, 169);
   background-color:thistle;
   width: 30px;
   border-radius: 25px;
@@ -831,8 +831,8 @@ input .s3-btn-close{
 }
 
 .show {
-  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
-  border: none !important;
+  border: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  /* border: none !important; */
 }
 
 .menu {
@@ -938,7 +938,7 @@ input .s3-btn-close{
     width: 95%;
   }
   .add-collab {
-    padding-left: 40px;
+    padding-left: 5px;
   }
   .Div2-contents i {
     padding-left: 2px;
@@ -947,7 +947,8 @@ input .s3-btn-close{
     padding-left: 23px !important;
   }
   .default-email {
-    padding-left: 10px;
+    padding-left: 7px;
+    font-size: 14px;
   }
   #popup-pallet {
     padding-bottom: 22px;
@@ -967,6 +968,19 @@ input .s3-btn-close{
   }
   .header-section img {
     width: 8.5%;
+  }
+  #search-email, #popup-search-email {
+    font-size: 14px;
+    width: 75%;
+  }
+  .popup-update-collab-dropdown .fa {
+    padding-left: 1px;
+  }
+  .dropdown-menu {
+    width: 16rem;
+  }
+  .signout-button {
+    width: initial;
   }
 }
 
@@ -1124,8 +1138,11 @@ input .s3-btn-close{
   .note-closing {
     padding-left: 130px;
   }
-  .note {
+  .sub-buttons {
     padding-left: 0px;
+  }
+  .note {
+    padding-left: 200px;
   }
   .popup {
     width: 580px;
@@ -1141,7 +1158,7 @@ input .s3-btn-close{
     padding-top: 10px;
   }
   .dropdown-toggle {
-    padding-bottom: 7px;
+    padding-bottom: 13px;
   }
   .button-outer {
     padding-left: 300px;
@@ -1151,7 +1168,10 @@ input .s3-btn-close{
     width: 85%;
   }
   .add-collab {
-    padding-left: 40px;
+    padding-left: 50px;
+  }
+  .addnote-dropdown-toggle {
+    width: 70%;
   }
   .Div2-contents i {
     padding-left: 2px;
@@ -1188,6 +1208,9 @@ input .s3-btn-close{
     width: 35px;
     height: 30px;
     padding-left: 5px;
+  }
+  .sub-buttons .material-icons-outlined {
+    font-size: 17px !important;
   }
 }
     
