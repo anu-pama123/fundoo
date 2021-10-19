@@ -736,9 +736,9 @@ input .s3-btn-close{
   padding-left: 15px;
 }
 
-.popup-collab-inner-contents li {
+/* .popup-collab-inner-contents li {
   padding-left: 55px;
-}
+} */
 
 .button-outer
 {
@@ -877,6 +877,10 @@ input .s3-btn-close{
 
 .col-section {
   padding-left: 10px;
+}
+
+.trash, .archive {
+  cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {

@@ -6,8 +6,7 @@ function getService(url, headerconfig) {
     return new Promise (function(resolve, reject) {
       var resolved = axios.get(baseurl + url, headerconfig);
       resolve(resolved);
-    })
-    
+    })    
 }
 
 function postService(url, data, headerconfig) {   
@@ -19,7 +18,6 @@ function postService(url, data, headerconfig) {
   })
 
 }
-
 
 function gettrashService(url,{}, headerconfig) {   
 
